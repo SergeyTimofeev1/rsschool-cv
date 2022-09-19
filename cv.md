@@ -1,6 +1,6 @@
 # **_Sergey Timofeev_**
 
-![](cv-logo.jpg)
+![](cv-logo(small).jpg)
 
 ### Contacts:
 
