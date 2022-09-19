@@ -16,7 +16,7 @@ HI, everybody! I am study javaScript and other web development technologies and 
 ### Skills:
 
 - HTML/CSS basic(work from udemi course)
-  - SergeyTimofeev1.github.io 
+  - [SergeyTimofeev1.github.io](SergeyTimofeev1.github.io)
 - JS (completed Kata's on Codewars.com) 
     - [Find index of the vowels](https://www.codewars.com/kata/5680781b6b7c2be860000036)
         ```
