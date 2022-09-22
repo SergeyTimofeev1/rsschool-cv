@@ -152,9 +152,60 @@
   line-height: 140%;
 }
 
-.backstage__flowers{
+.backstage__flowers {
   position: absolute;
-  content: url('../../assets/images/backstage/backstage-flowers.png');
+  content: url("../../assets/images/backstage/backstage-flowers.png");
   right: 0;
   top: 12px;
+}
+
+/* PETS */
+
+.pets__slider {
+  margin-bottom: 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 366px);
+  gap: 30px 20px;
+}
+
+.slider-item {
+  border: 1px solid var(--orange);
+  border-radius: 2px 2px 5px 5px;
+  width: 366px;
+}
+
+.slider-item__img {
+  width: 364px;
+  height: 366px;
+}
+
+.slider-item__inner {
+  padding: 4px 12px 14px 16px;
+  display: grid;
+  grid-template-columns: auto 33px;
+  grid-template-rows: 16px 15px;
+}
+
+.slider-item__title {
+  font-weight: 500;
+  line-height: 140%;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.slider-item__icon {
+  content: url('../../assets/icons/pets/banana-bamboo_icon.svg');
+  grid-row: span 2;
+}
+
+.slider-item__text {
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 120%;
+}
+
+.pets__button {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 100px;
 }
