@@ -217,10 +217,11 @@ template {
 }
 
 .container {
-  max-width: 1600px;
-  padding: 0 220px;
+  max-width: 1160px;
   margin: 0 auto;
 }
+
+
 
 ul,
 li,

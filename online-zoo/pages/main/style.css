@@ -27,7 +27,6 @@
   font-size: 16px;
   line-height: 140%;
   color: #fff;
-  width: 100vw;
 }
 
 .header__inner {
@@ -70,7 +69,6 @@
 .favorite {
   background-image: url(../../assets/images/favorite/Giant\ Panda.png);
   background-size: cover;
-  width: 1920px;
   height: 700px;
   margin: 0 auto;
   padding-top: 86px;
@@ -113,4 +111,50 @@
 
 .favorite__btn {
   align-self: flex-end;
+}
+
+/* BACKSTAGE */
+
+.backstage {
+  padding: 140px 0 180px 0;
+  position: relative;
+}
+
+.backstage__inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 87px;
+  padding-right: 5px;
+}
+
+.backstage__info {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--black-blue);
+}
+
+.backstage__info-title {
+  font-weight: 400;
+  font-size: 48px;
+}
+
+.backstage__info-subtitle {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.backstage__info p {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.backstage__flowers{
+  position: absolute;
+  content: url('../../assets/images/backstage/backstage-flowers.png');
+  right: 0;
+  top: 12px;
 }
