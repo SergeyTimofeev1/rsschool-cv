@@ -161,11 +161,17 @@
 
 /* PETS */
 
+.pets {
+  position: relative;
+  padding-bottom: 100px;
+}
+
 .pets__slider {
-  margin-bottom: 80px;
+  margin: 0 auto 80px;
   display: grid;
-  grid-template-columns: repeat(3, 366px);
+  grid-template-columns: repeat(3, 3fr);
   gap: 30px 20px;
+  position: relative;
 }
 
 .slider-item {
@@ -207,5 +213,42 @@
 .pets__button {
   display: block;
   margin: 0 auto;
-  margin-bottom: 100px;
+}
+
+/* Цветы(картинки по бокам) для секции Pets */
+.pets::before {
+  position: absolute;
+  content: url('../../assets/images/pets/pets-flowers-green.png');
+  bottom: 0;
+  left: 0;
+}
+
+.pets::after {
+  position: absolute;
+  content: url('../../assets/images/pets/pets-flowers-yellow.png');
+  bottom: 0;
+  right: 0;
+}
+
+/* "Стрелки" слайдера */
+
+.pets-slider__arrow {
+  position: absolute;
+  transform: translateY(50%);
+}
+
+.pets-slider__arrow:hover  {
+  cursor: pointer;
+}
+
+.arrow-left {
+  content: url('../../assets/icons/pets/slider-arrow-left.svg');
+  left: -82px;
+  bottom: 50%;
+}
+
+.arrow-right {
+  content: url('../../assets/icons/pets/slider-arrow-right.svg');
+  right: -71px;
+  bottom: 50%;
 }
