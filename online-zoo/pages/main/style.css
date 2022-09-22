@@ -1,3 +1,24 @@
+/* Кнопка */
+.button {
+  background-color: var(--orange);
+  text-transform: uppercase;
+  text-align: center;
+  width: 298px;
+  height: 42px;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+  border-radius: 25px;
+}
+
+.button:hover {
+  background-color: #e47209;
+  cursor: pointer;
+}
+
 /* HEADER */
 
 .header {
@@ -6,10 +27,11 @@
   font-size: 16px;
   line-height: 140%;
   color: #fff;
+  width: 100vw;
 }
 
 .header__inner {
-  min-height: 82px;
+  min-height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,12 +55,6 @@
   gap: 58px;
 }
 
-.navbar_item {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 140%;
-}
-
 .navbar__link:hover {
   color: var(--orange);
   text-decoration: underline;
@@ -46,8 +62,55 @@
 
 .navbar__link--active {
   color: var(--orange);
+  text-decoration: underline;
 }
 
-.navbar__link--active:hover {
-    text-decoration: none;
-  }
+/* FAVORITE */
+
+.favorite {
+  background-image: url(../../assets/images/favorite/Giant\ Panda.png);
+  background-size: cover;
+  width: 1920px;
+  height: 700px;
+  margin: 0 auto;
+  padding-top: 86px;
+}
+
+.favorite__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 60px;
+  position: relative;
+}
+
+.favorit__bcg-circle {
+  background-image: url(../../assets/images/favorite/Ellipse-online.png);
+  position: absolute;
+  top: -74px;
+  left: 587px;
+  width: 465px;
+  height: 465px;
+  border-radius: 50%;
+  background-color: var(--orange);
+}
+
+.favorite__title {
+  text-transform: uppercase;
+  width: 500px;
+  text-align: right;
+  font-weight: 700;
+  font-size: 107px;
+  line-height: 75%;
+  color: #ffffff;
+  align-self: flex-end;
+  z-index: 2;
+}
+
+.favorite__title span {
+  color: rgba(255, 238, 46, 1);
+}
+
+.favorite__btn {
+  align-self: flex-end;
+}
