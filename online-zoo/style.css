@@ -607,3 +607,7 @@
 .footer-wrapper__tablet-contacts {
   display: none;
 }
+
+.button.favorite__btn-mobile {
+  display: none;
+}
