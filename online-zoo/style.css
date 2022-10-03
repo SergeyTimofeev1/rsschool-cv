@@ -40,7 +40,7 @@
 
 .logo::after {
   position: absolute;
-  /* content: url(../../assets/icons/logo-icon.svg); */
+  content: url("./assets/icons/logo-icon.svg");
   left: 10px;
   top: 19px;
 }
@@ -53,6 +53,10 @@
   font-size: 16px;
   line-height: 140%;
   color: #fff;
+}
+
+.burger-menu-button {
+  display: none;
 }
 
 .header__inner {
@@ -105,7 +109,7 @@
   position: relative;
 }
 
-.favorit__bcg-circle {
+.favorite__bcg-circle {
   background-image: url("./assets/images/favorite/Ellipse-online.png");
   position: absolute;
   top: -74px;
@@ -202,7 +206,7 @@
 .slider-item {
   border: 1px solid var(--orange);
   border-radius: 2px 2px 5px 5px;
-  width: 366px;
+  margin: 0 auto;
 }
 
 .slider-item__img {
@@ -597,4 +601,13 @@
   width: calc(396 / 1160 * 100%);
   margin-bottom: 8px;
   line-height: 31px;
+}
+
+/* ДЛЯ АДАПТИВА КЛАССЫ ДЛЯ ФУТЕРА */
+.footer-wrapper__tablet-contacts {
+  display: none;
+}
+
+.button.favorite__btn-mobile {
+  display: none;
 }

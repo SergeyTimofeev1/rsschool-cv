@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./assets/styles/normalize.css" />
     <link rel="stylesheet" href="./assets/styles/variables.css" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="media.css" />
     <title>Online-zoo</title>
   </head>
   <body>
@@ -44,6 +45,11 @@
             </ul>
           </nav>
           <div class="navbar__copy">Designed by ©</div>
+          <button class="header__button burger-menu-button">
+            <div class="burger-menu__inner">
+              <span class="burger-menu__line"></span>
+            </div>
+          </button>
         </div>
       </div>
     </header>
@@ -52,7 +58,7 @@
       <section class="favorite">
         <div class="container">
           <div class="favorite__inner">
-            <div class="favorit__bcg-circle"></div>
+            <div class="favorite__bcg-circle"></div>
             <h1 class="favorite__title">
               Watch your <span>favorite</span> animal online
             </h1>
@@ -60,6 +66,7 @@
           </div>
         </div>
       </section>
+      <button class="button favorite__btn-mobile">watch online</button>
 
       <section class="backstage">
         <div class="container">
@@ -399,6 +406,12 @@
             />
             <button class="footer-form__button">Submit</button>
           </form>
+          <div class="footer-wrapper__tablet-contacts">
+            <a class="footer-contacts__link facebook" href="#"></a>
+            <a class="footer-contacts__link twitter" href="#"></a>
+            <a class="footer-contacts__link instagram" href="#"></a>
+            <a class="footer-contacts__link youtube" href="#"></a>
+          </div>
         </div>
         <button class="footer__button button button-secondary">
           donate for volunteers
