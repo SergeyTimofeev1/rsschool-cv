@@ -40,7 +40,6 @@
 
 .logo::after {
   position: absolute;
-  /* content: url(../../assets/icons/logo-icon.svg); */
   left: 10px;
   top: 19px;
 }
@@ -202,7 +201,7 @@
 .slider-item {
   border: 1px solid var(--orange);
   border-radius: 2px 2px 5px 5px;
-  width: 366px;
+  margin: 0 auto;
 }
 
 .slider-item__img {
