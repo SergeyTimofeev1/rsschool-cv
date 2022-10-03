@@ -69,3 +69,215 @@
     display: none;
   }
 }
+
+@media (max-width: 641px) {
+  .header {
+    height: 34px;
+    position: relative;
+    padding: 2px 0;
+  }
+  .header__inner {
+    min-height: 34px;
+  }
+  .header__logo {
+    margin: 0;
+  }
+  .header__logo::after {
+    content: url("./assets/images/media/media-640-bamboo.svg");
+    left: 4px;
+    top: 11px;
+  }
+  .header__logo.logo {
+    width: 46px;
+    height: 29px;
+    font-size: 12px;
+    font-weight: 400;
+    border: none;
+    padding: 0;
+  }
+  .header__navbar,
+  .navbar__copy {
+    display: none;
+  }
+  .burger-menu-button {
+    width: 18px;
+    height: 10px;
+    display: block;
+    position: relative;
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+  .burger-menu__inner {
+    position: relative;
+  }
+  .burger-menu__line,
+  .burger-menu__inner::after,
+  .burger-menu__inner::before {
+    position: absolute;
+    content: "";
+    width: 18px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 1px;
+  }
+  .burger-menu__inner::after {
+    top: 3px;
+    left: -6px;
+  }
+  .burger-menu__inner::before {
+    bottom: 5px;
+    left: -6px;
+  }
+  .burger-menu__line {
+    top: -2px;
+    left: -6px;
+  }
+  .favorite {
+    padding-left: 0;
+    height: 339px;
+    padding-bottom: 40px;
+    padding-top: 48px;
+  }
+  .favorite__inner {
+    gap: 0;
+  }
+  .favorite__title {
+    font-size: 54px;
+    font-weight: 700;
+    width: 255px;
+  }
+  .favorite__btn {
+    align-self: flex-start;
+    transform: translateY(-20%);
+  }
+  .favorite__bcg-circle {
+    left: 292px;
+    width: 238px;
+    height: 238px;
+    top: -41px;
+  }
+  .backstage {
+    padding: 60px 0 80px 0;
+  }
+  .backstage__inner {
+    display: block;
+    text-align: left;
+  }
+  .backstage__img {
+    display: none;
+  }
+  .backstage__info {
+    width: 495px;
+  }
+  .backstage__flowers {
+    display: block;
+    content: url("./assets/images/media/media-backstage-flowers.svg");
+  }
+  .pets {
+    overflow-x: hidden;
+  }
+  .how-it-works__title {
+    font-size: 42px;
+  }
+  .how-it-works__subtitle {
+    font-size: 22px;
+  }
+  .widget-arrow {
+    display: none;
+  }
+  .widgets {
+    position: relative;
+  }
+  .widgets::after,
+  .widgets::before {
+    position: absolute;
+    display: block;
+    content: url("./assets/images/media/meida-how-it-works-arrow.svg");
+  }
+  .widgets::after {
+    left: 45px;
+    top: -16px;
+  }
+  .widgets::before {
+    right: 49px;
+    top: -16px;
+  }
+  .testimonials {
+    padding: 60px 0 80px 0;
+  }
+  .testimonials .container {
+    padding: 0 30px 0;
+  }
+  .testimonials__inner {
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+  .testimonials__item {
+    max-height: 109px;
+    overflow: scroll;
+    width: 100%;
+    margin: 0;
+  }
+  .testimonials__input {
+    display: none;
+  }
+  .testemonials__button {
+    display: block;
+    margin: 0 auto;
+  }
+  .testimonials::after {
+    content: url("./assets/images/media/media-testemonials.png");
+    bottom: -74px;
+  }
+  .footer {
+    padding: 12px 0 12px 0;
+  }
+  .footer__form {
+    display: none;
+  }
+  .footer__wrapper {
+    margin-bottom: 32px;
+  }
+  .footer__inner {
+    gap: 9%;
+  }
+  .footer-inner__contacts {
+    display: none;
+  }
+  .footer-navbar {
+    width: auto;
+  }
+  .footer-navbar__items {
+    gap: 37px;
+  }
+  .footer-copy {
+    width: auto;
+    text-align: right;
+  }
+  .footer__wrapper {
+    position: relative;
+  }
+  .footer-wrapper__tablet-contacts {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    gap: 20px;
+  }
+  .footer-contacts__link.facebook::after,
+  .footer-contacts__link.twitter::after,
+  .footer-contacts__link.instagram::after,
+  .footer-contacts__link.youtube::after {
+    position: relative;
+    transform: translateY(50%);
+    right: 0;
+    left: 0;
+    width: 26px;
+    height: 26px;
+  }
+  .footer__button {
+    margin-bottom: 67px;
+  }
+}
