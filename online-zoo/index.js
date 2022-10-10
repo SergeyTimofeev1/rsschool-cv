@@ -127,18 +127,24 @@ function hideBurgerMenu(e) {
 let testimonialsItems = document.querySelectorAll(".testimonials__item");
 let popupOverlay = document.querySelector("#popup-overlay");
 let popup = document.querySelector("#popup-item");
-let popupClose = document.querySelector("#popup-close");
+let popupClose = document.querySelectorAll("#popup-close");
 
-testimonialsItems.forEach(function (item) {
-  item.addEventListener("click", function (event) {
-    this.classList.add("active-popup");
-    this.lastChild.previousElementSibling.style.opacity = 1;
-    popupOverlay.style.top = 0;
+function showPopup() {
+  if (window.matchMedia("(max-width: 641px)").matches) {
+    testimonialsItems.forEach(function (item) {
+      item.addEventListener("click", function (event) {
+        this.classList.add("active-popup");
+        this.lastChild.previousElementSibling.style.opacity = 1;
+        // popupOverlay.style.top = 0;
+        popupOverlay.classList.toggle("show");
+      });
+    });
+  }
+}
+showPopup();
+
+popupClose.forEach(function (close) {
+  close.addEventListener("click", function (event) {
+    event.target.parentNode.remove(".active-popup");
   });
-});
-
-popupClose.addEventListener("click", function (e) {
-  e.target.parentElement.remove(".active-popup");
-  console.log(e);
-  popupOverlay.style.left = 1000 + "px";
 });
