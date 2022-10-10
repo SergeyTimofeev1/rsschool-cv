@@ -194,13 +194,16 @@
   padding-bottom: 100px;
 }
 
+.pets-container {
+  position: relative;
+}
+
 .pets__slider {
   margin: 0 auto 80px;
   display: grid;
   max-width: 1158px;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px 20px;
-  position: relative;
 }
 
 .slider-item {
@@ -601,6 +604,68 @@
   width: calc(396 / 1160 * 100%);
   margin-bottom: 8px;
   line-height: 31px;
+}
+
+/* Стили для слайдера */
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.pets__slider {
+  display: none;
+  position: relative;
+  animation: 0.5s ease-in-out;
+  margin: 0 auto;
+}
+
+.active,
+.next {
+  display: grid;
+}
+
+.next {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.to-left {
+  animation-name: left;
+}
+
+.from-right {
+  animation-name: right;
+}
+
+.to-right {
+  animation-name: right;
+  animation-direction: reverse;
+}
+
+.from-left {
+  animation-name: left;
+  animation-direction: reverse;
+}
+
+@keyframes left {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
+  }
+}
+
+@keyframes right {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
 }
 
 /* ДЛЯ АДАПТИВА КЛАССЫ ДЛЯ ФУТЕРА */

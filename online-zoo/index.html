@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./assets/styles/normalize.css" />
     <link rel="stylesheet" href="./assets/styles/variables.css" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="slider.css" />
     <link rel="stylesheet" href="media.css" />
     <title>Online-zoo</title>
   </head>
@@ -100,106 +101,208 @@
       </section>
 
       <section class="pets">
-        <div class="container">
-          <div class="pets__slider pets-slider">
+        <div class="container pets-container">
+          <div class="pets__carousel carousel">
+            <div class="carousel-container">
+              <div class="pets__slider pets-slider active">
+                <div class="pets-slider__item slider-item">
+                  <img
+                    class="slider-item__img"
+                    src="./assets/images/pets/pets-img-1.png"
+                    alt="slider-img"
+                  />
+                  <div class="slider-item__inner">
+                    <h4 class="slider-item__title">giant Pandas</h4>
+                    <img
+                      class="slider-item__icon"
+                      src="./assets/icons/pets/banana-bamboo_icon.svg"
+                      alt="slider-icon"
+                    />
+                    <p class="slider-item__text">Native to Southwest China</p>
+                  </div>
+                </div>
+                <div class="pets-slider__item slider-item">
+                  <img
+                    class="slider-item__img"
+                    src="./assets/images/pets/pets-img-2.png"
+                    alt="slider-img"
+                  />
+                  <div class="slider-item__inner">
+                    <h4 class="slider-item__title">Eagles</h4>
+                    <img
+                      class="slider-item__icon"
+                      src="./assets/icons/pets/meet-fish_icon.svg"
+                      alt="slider-icon"
+                    />
+                    <p class="slider-item__text">Native to South America</p>
+                  </div>
+                </div>
+                <div class="pets-slider__item slider-item">
+                  <img
+                    class="slider-item__img"
+                    src="./assets/images/pets/pets-img-3.png"
+                    alt="slider-img"
+                  />
+                  <div class="slider-item__inner">
+                    <h4 class="slider-item__title">Gorillas</h4>
+                    <img
+                      class="slider-item__icon"
+                      src="./assets/icons/pets/banana-bamboo_icon.svg"
+                      alt="slider-icon"
+                    />
+                    <p class="slider-item__text">Native to Congo</p>
+                  </div>
+                </div>
+                <div class="pets-slider__item slider-item">
+                  <img
+                    class="slider-item__img"
+                    src="./assets/images/pets/pets-img-4.png"
+                    alt="slider-img"
+                  />
+                  <div class="slider-item__inner">
+                    <h4 class="slider-item__title">Two-toed Sloth</h4>
+                    <img
+                      class="slider-item__icon"
+                      src="./assets/icons/pets/banana-bamboo_icon.svg"
+                      alt="slider-img"
+                    />
+                    <p class="slider-item__text">Mesoamerica, South America</p>
+                  </div>
+                </div>
+                <div class="pets-slider__item slider-item">
+                  <img
+                    class="slider-item__img"
+                    src="./assets/images/pets/pets-img-5.png"
+                    alt="slider-img"
+                  />
+                  <div class="slider-item__inner">
+                    <h4 class="slider-item__title">cheetahs</h4>
+                    <img
+                      class="slider-item__icon"
+                      src="./assets/icons/pets/meet-fish_icon.svg"
+                      alt="slider-img"
+                    />
+                    <p class="slider-item__text">Native to Africa</p>
+                  </div>
+                </div>
+                <div class="pets-slider__item slider-item">
+                  <img
+                    class="slider-item__img"
+                    src="./assets/images/pets/pets-img-6.png"
+                    alt="slider-img"
+                  />
+                  <div class="slider-item__inner">
+                    <h4 class="slider-item__title">Penguins</h4>
+                    <img
+                      class="slider-item__icon"
+                      src="./assets/icons/pets/meet-fish_icon.svg"
+                      alt="slider-img"
+                    />
+                    <p class="slider-item__text">Native to Antarctica</p>
+                  </div>
+                </div>
+              </div>
+              <div class="pets__slider pets-slider pets-slider">
+                <div class="pets-slider__item slider-item">
+                  <img
+                    class="slider-item__img"
+                    src="./assets/images/pets/pets-img-1.png"
+                    alt="slider-img"
+                  />
+                  <div class="slider-item__inner">
+                    <h4 class="slider-item__title">giant Pandas</h4>
+                    <img
+                      class="slider-item__icon"
+                      src="./assets/icons/pets/banana-bamboo_icon.svg"
+                      alt="slider-icon"
+                    />
+                    <p class="slider-item__text">Native to Southwest China</p>
+                  </div>
+                </div>
+                <div class="pets-slider__item slider-item">
+                  <img
+                    class="slider-item__img"
+                    src="./assets/images/pets/pets-img-2.png"
+                    alt="slider-img"
+                  />
+                  <div class="slider-item__inner">
+                    <h4 class="slider-item__title">Eagles</h4>
+                    <img
+                      class="slider-item__icon"
+                      src="./assets/icons/pets/meet-fish_icon.svg"
+                      alt="slider-icon"
+                    />
+                    <p class="slider-item__text">Native to South America</p>
+                  </div>
+                </div>
+                <div class="pets-slider__item slider-item">
+                  <img
+                    class="slider-item__img"
+                    src="./assets/images/pets/pets-img-3.png"
+                    alt="slider-img"
+                  />
+                  <div class="slider-item__inner">
+                    <h4 class="slider-item__title">Gorillas</h4>
+                    <img
+                      class="slider-item__icon"
+                      src="./assets/icons/pets/banana-bamboo_icon.svg"
+                      alt="slider-icon"
+                    />
+                    <p class="slider-item__text">Native to Congo</p>
+                  </div>
+                </div>
+                <div class="pets-slider__item slider-item">
+                  <img
+                    class="slider-item__img"
+                    src="./assets/images/pets/pets-img-4.png"
+                    alt="slider-img"
+                  />
+                  <div class="slider-item__inner">
+                    <h4 class="slider-item__title">Two-toed Sloth</h4>
+                    <img
+                      class="slider-item__icon"
+                      src="./assets/icons/pets/banana-bamboo_icon.svg"
+                      alt="slider-img"
+                    />
+                    <p class="slider-item__text">Mesoamerica, South America</p>
+                  </div>
+                </div>
+                <div class="pets-slider__item slider-item">
+                  <img
+                    class="slider-item__img"
+                    src="./assets/images/pets/pets-img-5.png"
+                    alt="slider-img"
+                  />
+                  <div class="slider-item__inner">
+                    <h4 class="slider-item__title">cheetahs</h4>
+                    <img
+                      class="slider-item__icon"
+                      src="./assets/icons/pets/meet-fish_icon.svg"
+                      alt="slider-img"
+                    />
+                    <p class="slider-item__text">Native to Africa</p>
+                  </div>
+                </div>
+                <div class="pets-slider__item slider-item">
+                  <img
+                    class="slider-item__img"
+                    src="./assets/images/pets/pets-img-6.png"
+                    alt="slider-img"
+                  />
+                  <div class="slider-item__inner">
+                    <h4 class="slider-item__title">Penguins</h4>
+                    <img
+                      class="slider-item__icon"
+                      src="./assets/icons/pets/meet-fish_icon.svg"
+                      alt="slider-img"
+                    />
+                    <p class="slider-item__text">Native to Antarctica</p>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="pets-slider__arrow arrow-left"></div>
             <div class="pets-slider__arrow arrow-right"></div>
-            <div class="pets-slider__item slider-item">
-              <img
-                class="slider-item__img"
-                src="./assets/images/pets/pets-img-1.png"
-                alt="slider-img"
-              />
-              <div class="slider-item__inner">
-                <h4 class="slider-item__title">giant Pandas</h4>
-                <img
-                  class="slider-item__icon"
-                  src="./assets/icons/pets/banana-bamboo_icon.svg"
-                  alt="slider-icon"
-                />
-                <p class="slider-item__text">Native to Southwest China</p>
-              </div>
-            </div>
-            <div class="pets-slider__item slider-item">
-              <img
-                class="slider-item__img"
-                src="./assets/images/pets/pets-img-2.png"
-                alt="slider-img"
-              />
-              <div class="slider-item__inner">
-                <h4 class="slider-item__title">Eagles</h4>
-                <img
-                  class="slider-item__icon"
-                  src="./assets/icons/pets/meet-fish_icon.svg"
-                  alt="slider-icon"
-                />
-                <p class="slider-item__text">Native to South America</p>
-              </div>
-            </div>
-            <div class="pets-slider__item slider-item">
-              <img
-                class="slider-item__img"
-                src="./assets/images/pets/pets-img-3.png"
-                alt="slider-img"
-              />
-              <div class="slider-item__inner">
-                <h4 class="slider-item__title">Gorillas</h4>
-                <img
-                  class="slider-item__icon"
-                  src="./assets/icons/pets/banana-bamboo_icon.svg"
-                  alt="slider-icon"
-                />
-                <p class="slider-item__text">Native to Congo</p>
-              </div>
-            </div>
-            <div class="pets-slider__item slider-item">
-              <img
-                class="slider-item__img"
-                src="./assets/images/pets/pets-img-4.png"
-                alt="slider-img"
-              />
-              <div class="slider-item__inner">
-                <h4 class="slider-item__title">Two-toed Sloth</h4>
-                <img
-                  class="slider-item__icon"
-                  src="./assets/icons/pets/banana-bamboo_icon.svg"
-                  alt="slider-img"
-                />
-                <p class="slider-item__text">Mesoamerica, South America</p>
-              </div>
-            </div>
-            <div class="pets-slider__item slider-item">
-              <img
-                class="slider-item__img"
-                src="./assets/images/pets/pets-img-5.png"
-                alt="slider-img"
-              />
-              <div class="slider-item__inner">
-                <h4 class="slider-item__title">cheetahs</h4>
-                <img
-                  class="slider-item__icon"
-                  src="./assets/icons/pets/meet-fish_icon.svg"
-                  alt="slider-img"
-                />
-                <p class="slider-item__text">Native to Africa</p>
-              </div>
-            </div>
-            <div class="pets-slider__item slider-item">
-              <img
-                class="slider-item__img"
-                src="./assets/images/pets/pets-img-6.png"
-                alt="slider-img"
-              />
-              <div class="slider-item__inner">
-                <h4 class="slider-item__title">Penguins</h4>
-                <img
-                  class="slider-item__icon"
-                  src="./assets/icons/pets/meet-fish_icon.svg"
-                  alt="slider-img"
-                />
-                <p class="slider-item__text">Native to Antarctica</p>
-              </div>
-            </div>
           </div>
           <button class="pets__button button">Choose your favorite</button>
         </div>
@@ -449,5 +552,6 @@
         </div>
       </div>
     </footer>
+    <script src="index.js"></script>
   </body>
 </html>
