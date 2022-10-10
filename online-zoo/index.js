@@ -54,7 +54,7 @@ document.querySelector(".arrow-right").addEventListener("click", function () {
 // Карусель в блоке testimonials
 
 let input = document.querySelector(".testimonials__input");
-let testimonialsArr = document.querySelectorAll(".testimonials__inner");
+let testimonialsArr = document.querySelector(".testimonials__inner");
 let testimonialsItem = document.querySelector(".testimonials__item");
 
 function changeValue() {
@@ -63,7 +63,7 @@ function changeValue() {
     const testimonialsGap = parseInt(
       window.getComputedStyle(testimonialsArr).columnGap
     );
-    // testimonialsArr.scrollLeft = (itemWidth + testimonialsGap) * e.target.value
+    // testimonialsArr.scrollLeft = (itemWidth + testimonialsGap) * e.target.value;
     testimonialsArr.scroll({
       left: (itemWidth + testimonialsGap) * e.target.value,
       behavior: "smooth",
@@ -122,8 +122,6 @@ function hideBurgerMenu(e) {
 
 // POPUP
 
-// let input = document.querySelector('.testimonials__input')
-// let testimonialsArr = document.querySelector('.testimonials__inner')
 let testimonialsItems = document.querySelectorAll(".testimonials__item");
 let popupOverlay = document.querySelector("#popup-overlay");
 let popup = document.querySelector("#popup-item");
