@@ -23,6 +23,20 @@
   cursor: pointer;
 }
 
+/*  Overlay */
+
+.overlay {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(17, 17, 21, 0.5);
+  margin: auto;
+  z-index: 1000 !important;
+}
+
 /* LOGO */
 
 .logo {
@@ -46,6 +60,9 @@
 }
 
 /* HEADER */
+.mobile-menu {
+  display: none;
+}
 
 .header {
   background-color: #000;
@@ -244,6 +261,7 @@
 .pets__button {
   display: block;
   margin: 0 auto;
+  margin-top: 60px;
 }
 
 /* Цветы(картинки по бокам) для секции Pets */
@@ -368,6 +386,9 @@
   padding-top: 140px;
   padding-bottom: 180px;
 }
+.testimonials .container {
+  overflow-x: hidden;
+}
 
 .testimonials__title {
   font-weight: 400;
@@ -379,11 +400,20 @@
 
 .testimonials__inner {
   display: flex;
+  position: relative;
   justify-content: space-between;
   gap: 29px;
+  appearance: none;
+  -ms-overflow-style: none;
+  overflow-x: scroll;
+}
+.testimonials__inner::-webkit-scrollbar {
+  width: 0;
 }
 
 .testimonials__item {
+  width: 268px;
+  flex: 0 0 auto;
   border: 2px solid transparent;
   border-radius: 20px;
   background: linear-gradient(
@@ -397,7 +427,6 @@
   position: relative;
   overflow-y: scroll;
   padding: 15px 19px 18px 16px;
-  width: 25%;
   max-height: 391px;
   margin-bottom: 21px;
 }
@@ -675,4 +704,43 @@
 
 .button.favorite__btn-mobile {
   display: none;
+}
+/* Popup */
+
+/* popup */
+.testimonials__item.active-popup {
+  min-height: 391px;
+  z-index: 15;
+  position: fixed;
+  top: 10%;
+  transform: translateX(-50%);
+  left: 50%;
+  width: 267px;
+  height: 100%;
+  transition: all 0.3s;
+}
+.hide {
+  display: none;
+}
+.popup-close {
+  display: none;
+  position: absolute;
+  font-size: 22px;
+  line-height: 22px;
+  color: rgba(254, 189, 171, 1);
+  content: "X";
+  top: 3%;
+  right: 5%;
+  z-index: 1000;
+}
+.popup-overlay {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(245, 247, 246, 0.7);
+  margin: auto;
+  z-index: 12;
 }
