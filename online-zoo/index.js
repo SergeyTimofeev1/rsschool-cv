@@ -125,19 +125,20 @@ function hideBurgerMenu(e) {
 // let input = document.querySelector('.testimonials__input')
 // let testimonialsArr = document.querySelector('.testimonials__inner')
 let testimonialsItems = document.querySelectorAll(".testimonials__item");
-let popupOverlay = document.querySelector(".popup-overlay");
-let popupActive = document.querySelector(".active-popup");
-let popupClose = document.querySelector(".popup-close");
+let popupOverlay = document.querySelector("#popup-overlay");
+let popup = document.querySelector("#popup-item");
+let popupClose = document.querySelector("#popup-close");
 
-testimonialsItems.forEach(function (e) {
-  e.addEventListener("click", function () {
-    e.classList.add("active-popup");
-    popupOverlay.style.display = "block";
-    popupClose.style.display = "block";
+testimonialsItems.forEach(function (item) {
+  item.addEventListener("click", function (event) {
+    this.classList.add("active-popup");
+    this.lastChild.previousElementSibling.style.opacity = 1;
+    popupOverlay.style.top = 0;
   });
 });
 
-function hidePopup() {
-  console.log(popupActive);
-}
-hidePopup();
+popupClose.addEventListener("click", function (e) {
+  e.target.parentElement.remove(".active-popup");
+  console.log(e);
+  popupOverlay.style.left = 1000 + "px";
+});

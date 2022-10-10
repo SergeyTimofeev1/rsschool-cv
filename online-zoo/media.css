@@ -313,6 +313,30 @@
     width: 100%;
     margin: 0;
   }
+  .testimonials__item:nth-child(4) {
+    display: none;
+  }
+  .testimonials__item:nth-child(5) {
+    display: none;
+  }
+  .testimonials__item:nth-child(6) {
+    display: none;
+  }
+  .testimonials__item:nth-child(7) {
+    display: none;
+  }
+  .testimonials__item:nth-child(8) {
+    display: none;
+  }
+  .testimonials__item:nth-child(9) {
+    display: none;
+  }
+  .testimonials__item:nth-child(10) {
+    display: none;
+  }
+  .testimonials__item:nth-child(11) {
+    display: none;
+  }
   .testimonials__input {
     display: none;
   }
