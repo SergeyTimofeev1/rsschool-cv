@@ -1,0 +1,66 @@
+// body,
+// html {
+//     font: 16px/1.4 ro, serif;
+// }
+
+.container {
+  max-width: 400px;
+  padding: 2rem;
+  margin: 0 auto;
+  text-align: center;
+  user-select: none;
+}
+
+.start-button {
+  margin: 0 auto;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  border-radius: 15px;
+}
+
+// h1 {
+//     font 2rem/1.2 Georgia serif
+//     margin-bottom 1em
+// }
+
+.puzzle {
+  width: 100%;
+  padding-bottom: 100%;
+  background: #e5d6f6;
+  margin-bottom: 1.2em;
+  position: relative;
+  &__info {
+    display: flex;
+    justify-content: space-around;
+    font: 1.5rem/1.2 Georgia serif;
+    margin-bottom: 0.5rem;
+  }
+  .item {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 25%;
+    height: 25%;
+    margin: 0;
+    border: 0;
+    background: plum;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.3s;
+    border: 1px solid purple;
+  }
+}
+
+.button {
+  color: white;
+  background: black;
+  font: 1.2rem/1.2 Georgia serif;
+  border: 2px solid purple;
+  padding: 0.5em 1.5em;
+  cursor: pointer;
+  &:hover {
+    background: purple;
+  }
+}
