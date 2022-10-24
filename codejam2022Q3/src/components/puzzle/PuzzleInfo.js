@@ -1,6 +1,6 @@
 import {$} from "../../core/dom";
 import {PuzzleComponent} from "../../core/PuzzleComponent";
-import {capitalize, storage} from "../../core/utils";
+import {capitalize, getSizeText, isEmpty, storage} from "../../core/utils";
 import {Stopwatch} from "../timer/Stopwatch";
 
 export class PuzzleInfo extends PuzzleComponent {
@@ -44,6 +44,7 @@ export class PuzzleInfo extends PuzzleComponent {
         this.$on('save', this.saveGame.bind(this))
         this.$on('madeMove', this.updateMoves.bind(this))
         this.$on('setSize', this.resetPuzzleInfo.bind(this))
+        this.$on('winner', this.notifyWin.bind(this))
     }
 
     resetPuzzleInfo () {
@@ -65,5 +66,17 @@ export class PuzzleInfo extends PuzzleComponent {
         }
         const el = this.$root.find('[data-id="moves"]')
         el.text(moves)
+    }
+
+    notifyWin ({size, moves}) {
+        this.stopTimer()
+        let results =  isEmpty(storage('results')) ? [] : storage('results')
+        const result = {
+            size: getSizeText(size),
+            time: this.stopwatch.currentTime,
+            moves
+        }
+        results = [result, ...results]
+        storage('results', results.slice(0, 11))
     }
 }

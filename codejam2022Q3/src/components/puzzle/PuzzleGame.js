@@ -16,11 +16,18 @@ export class PuzzleGame extends PuzzleComponent {
     this.matrix = [];
     this.size = options.size;
     this.moves = storage("puzzle.moves") || 0;
+    this.gameDisabled = false;
+
     customElements.define("results-popup", ResultsPopUp);
   }
 
   get puzzleLength() {
     return Math.pow(this.size, 2);
+  }
+
+  get flatMatrix() {
+    const numList = Array.from({ length: this.puzzleLength }, (_, i) => ++i);
+    return chunk(numList, this.size).flat();
   }
 
   render() {
@@ -36,6 +43,9 @@ export class PuzzleGame extends PuzzleComponent {
   }
 
   resetGame(size = null) {
+    if (this.gameDisabled) {
+      this.toggleGameShutdown();
+    }
     this.size = size ? size : this.size;
     this.moves = 0;
     this.savedFlatMatrix = [];
@@ -45,19 +55,11 @@ export class PuzzleGame extends PuzzleComponent {
   saveGame() {
     ["size", "moves"].forEach((item) => storage(`puzzle.${item}`, this[item]));
     storage("puzzle.list", this.matrix.flat());
-    storage("results", [
-      { size: this.size, moves: this.moves, time: new Date() },
-      { size: this.size, moves: this.moves, time: new Date() },
-      { size: this.size, moves: this.moves, time: new Date() },
-      { size: this.size, moves: this.moves, time: new Date() },
-      { size: this.size, moves: this.moves, time: new Date() },
-      { size: this.size, moves: this.moves, time: new Date() },
-    ]);
   }
 
   generatePuzzleGame() {
     this.$root.html("");
-    const flatMatrix = this.getFlatMatrix();
+    const flatMatrix = this.getFlatShuffledMatrix();
     this.matrix = chunk(flatMatrix, this.size);
     flatMatrix.forEach((item) => {
       const el = $.create("div", ...this.getPuzzleItemClasses(item))
@@ -70,12 +72,14 @@ export class PuzzleGame extends PuzzleComponent {
     this.$root.append($.create("results-popup"));
   }
 
-  getFlatMatrix() {
+  getFlatShuffledMatrix() {
     if (!isEmpty(this.savedFlatMatrix)) {
       return this.savedFlatMatrix;
     }
-    const list = Array.from({ length: this.puzzleLength }, (_, i) => ++i);
-    return shuffle(list);
+
+    // ! МАССИВ ДЛЯ БЫСТРОЙ ПРОВЕРКИ
+    // return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 15]; //! 4Х4
+    return shuffle(this.flatMatrix);
   }
 
   getPuzzleItemClasses(item) {
@@ -83,7 +87,7 @@ export class PuzzleGame extends PuzzleComponent {
   }
 
   setPuzzleItemStyle(item) {
-    const { x, y } = this.getItemCoords(item);
+    const { x, y } = this.getMatrixItemIndex(item);
     const itemWidthAndHeight = (100 / this.size).toFixed(2) + "%";
     return {
       width: itemWidthAndHeight,
@@ -92,9 +96,20 @@ export class PuzzleGame extends PuzzleComponent {
     };
   }
 
+  getMatrixItemIndex(value) {
+    return this.matrix.reduce((result, ch, idx) => {
+      if (ch.includes(value)) {
+        result.x = idx;
+        result.y = ch.findIndex((i) => i === value);
+      }
+      return result;
+    }, {});
+  }
+
   toggleValidToSwapPuzzle(target) {
     if (target) {
       const itemNumber = Number(target.data("id"));
+      console.log({ itemNumber, valid: this.isValidToSwap(itemNumber) });
       if (this.isValidToSwap(itemNumber)) {
         // target.attr({draggable: true})
         this.validToSwapPuzzle = target;
@@ -108,27 +123,28 @@ export class PuzzleGame extends PuzzleComponent {
   }
 
   isValidToSwap(itemNumber) {
-    const c1 = this.getItemCoords(itemNumber);
-    const c2 = this.getItemCoords(this.puzzleLength);
+    const c1 = this.getMatrixItemIndex(itemNumber);
+    const c2 = this.getMatrixItemIndex(this.puzzleLength);
     return (c1.x === c2.x || c1.y === c2.y) && (Math.abs(c1.x - c2.x) === 1 || Math.abs(c1.y - c2.y) === 1);
   }
 
-  getItemCoords(itemNumber) {
-    return this.matrix.reduce((coords, item, idx) => {
-      if (item.includes(itemNumber)) {
-        coords.x = idx;
-        coords.y = getIndex(item, itemNumber);
-      }
-      return coords;
-    }, {});
+  updateMatrix(itemNumber) {
+    const c1 = this.getMatrixItemIndex(itemNumber);
+    const c2 = this.getMatrixItemIndex(this.puzzleLength);
+    this.matrix[c1.x][c1.y] = this.matrix[c2.x].splice(c2.y, 1, this.matrix[c1.x][c1.y])[0];
+    // const allItems = this.$root.findAll('.puzzle-game__item')
   }
 
-  updateMatrix(itemNumber) {
-    const arr = this.matrix.flat();
-    const c1 = getIndex(arr, itemNumber);
-    const c2 = getIndex(arr, this.puzzleLength);
-    arr[c1] = arr.splice(c2, 1, arr[c1])[0];
-    return chunk(arr, this.size);
+  checkWinner() {
+    if (JSON.stringify(this.matrix.flat()) === JSON.stringify(this.flatMatrix)) {
+      this.$emit("winner", { size: this.size, moves: this.moves });
+      this.toggleGameShutdown();
+    }
+  }
+
+  toggleGameShutdown() {
+    this.gameDisabled = !this.gameDisabled;
+    this.$root.toggle("disabled");
   }
 
   onMousedown(event) {
@@ -143,11 +159,12 @@ export class PuzzleGame extends PuzzleComponent {
 
   onClick(event) {
     if (this.validToSwapPuzzle) {
+      this.updateMatrix(Number(this.validToSwapPuzzle.data("id")));
       const blankItem = this.$root.find(`[data-id="${this.puzzleLength}"]`);
       blankItem.swapWith(this.validToSwapPuzzle);
-      this.matrix = this.updateMatrix(Number(this.validToSwapPuzzle.data("id")));
       this.moves += 1;
       this.$emit("madeMove", this.moves);
+      this.checkWinner();
     }
     // this.toggleValidToSwapPuzzle()
   }
@@ -180,12 +197,12 @@ export class PuzzleGame extends PuzzleComponent {
   onDrop(event) {
     console.log({ onDrop: event });
     // event.preventDefault()
-    if (this.validToSwapPuzzle) {
-      const blankItem = this.$root.find(`[data-id="${this.puzzleLength}"]`);
-      blankItem.swapWith(this.validToSwapPuzzle);
-      this.matrix = this.updateMatrix(Number(this.validToSwapPuzzle.data("id")));
-    }
-    this.toggleValidToSwapPuzzle();
+    // if (this.validToSwapPuzzle) {
+    //     const blankItem = this.$root.find(`[data-id="${this.puzzleLength}"]`)
+    //     blankItem.swapWith(this.validToSwapPuzzle)
+    //     this.matrix = this.updateMatrix(Number(this.validToSwapPuzzle.data('id')))
+    // }
+    // this.toggleValidToSwapPuzzle()
     // const target = $(event.target).add('is-empty')
   }
 }
@@ -196,12 +213,10 @@ function shuffle(arr) {
 
 function chunk(arr, chunkSize) {
   return arr.reduce((all, one, idx) => {
-    const ch = Math.floor(idx / chunkSize);
+    const row = Math.floor(one % chunkSize);
+    const ch = row > 0 ? row - 1 : chunkSize - 1;
+    // const ch = Math.floor(idx % chunkSize)
     all[ch] = [].concat(all[ch] || [], one);
     return all;
   }, []);
-}
-
-function getIndex(arr, value) {
-  return arr.findIndex((item) => item === value);
 }

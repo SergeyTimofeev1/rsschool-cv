@@ -38,6 +38,10 @@ export function humanReadableTime (timeObj) {
   }
 }
 
+export function getSizeText (size) {
+  return `${size}x${size}`
+}
+
 function addTrailingZero (value) {
   let result = value.toString()
   if (value < 10) { result = '0' + value }

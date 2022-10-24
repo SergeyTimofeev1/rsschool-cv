@@ -104,6 +104,11 @@ class Dom {
 
         return this.$el.textContent.trim()
     }
+
+    toggle (name) {
+        this.$el.classList.toggle(name)
+        return this
+    }
 }
 
 export function $ (selector) {

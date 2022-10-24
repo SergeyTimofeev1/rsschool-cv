@@ -1,5 +1,6 @@
-* {
-  box-sizing: border-box;
+html {
+  font-size: 15px;
+  background-color: #f5f0e1;
 }
 
 .gem-puzzle {
@@ -23,7 +24,13 @@
   display: block;
   width: 100%;
   height: 100%;
-  background: #e5d6f6;
+  background: rgb(30, 61, 89, 0.7);
+  margin-bottom: 1.2em;
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.7;
+  }
 }
 
 .puzzle-game__item {
@@ -34,30 +41,36 @@
   width: 25%;
   height: 25%;
   padding: 0;
-  background: plum;
+  background: #1e3d59;
   color: white;
   font-size: 1.2em;
   cursor: pointer;
-  border: 1px solid purple;
+  outline: 1px solid black;
   transition: transform 0.3s;
 
   &.is-empty {
     color: transparent;
     background-color: transparent;
     outline: 0;
-    border: none;
     cursor: default;
   }
 }
 
-.reset-btn {
-  color: white;
-  background: black;
-  font: 1.2rem/1.2 Georgia serif;
-  border: 2px solid purple;
-  padding: 0.5em 1.5em;
+.puzzle-game__menu,
+.sizes-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pg-button {
+  width: auto;
+  color: #1e3d59;
+  background-color: #f5f0e1;
+  border: 1px solid #1e3d59;
+  border-radius: 5px;
+  outline: 0;
   cursor: pointer;
-  &:hover {
-    background: purple;
+  &:disabled {
+    opacity: 0.7;
   }
 }

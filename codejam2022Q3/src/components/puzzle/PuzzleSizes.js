@@ -1,6 +1,7 @@
 import {$} from "../../core/dom";
 import {PuzzleComponent} from "../../core/PuzzleComponent";
 import {Button} from "../shared/Button";
+import {getSizeText} from "../../core/utils";
 
 export class PuzzleSizes extends PuzzleComponent {
     static className = 'puzzle-game__sizes'
@@ -55,8 +56,4 @@ export class PuzzleSizes extends PuzzleComponent {
             }
         }
     }
-}
-
-function getSizeText (size) {
-    return `${size}x${size}`
 }
