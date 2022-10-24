@@ -1,27 +1,24 @@
 results-popup {
   position: absolute;
-  top: 0;
+  color: #fff;
   left: 0;
   width: 100%;
   height: 100%;
   backdrop-filter: blur(5px);
+  top: -400%;
   opacity: 0;
-  display: none;
 
   &::part(popup) {
     width: calc(100% - 40px);
     height: calc(100% - 40px);
     padding: 20px;
-    overflow: hidden;
-  }
-
-  &::part(popup-list) {
+    overflow: scroll;
   }
 
   &::part(popup-item) {
     display: grid;
     grid-template-columns: 1fr 1fr 3fr;
     padding-top: 10px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #ff6e40;
   }
 }

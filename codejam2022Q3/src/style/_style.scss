@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 html {
   font-size: 15px;
   background-color: #f5f0e1;
@@ -41,11 +44,11 @@ html {
   width: 25%;
   height: 25%;
   padding: 0;
-  background: #1e3d59;
+  background: rgb(30, 61, 89, 0.8);
+  // border: 1px solid white;
   color: white;
   font-size: 1.2em;
   cursor: pointer;
-  outline: 1px solid black;
   transition: transform 0.3s;
 
   &.is-empty {
@@ -53,6 +56,7 @@ html {
     background-color: transparent;
     outline: 0;
     cursor: default;
+    border: none;
   }
 }
 
@@ -60,6 +64,12 @@ html {
 .sizes-buttons {
   display: flex;
   justify-content: space-between;
+}
+
+.puzzle-game__info {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
 }
 
 .pg-button {

@@ -26,8 +26,11 @@ export class PuzzleGame extends PuzzleComponent {
   }
 
   get flatMatrix() {
-    const numList = Array.from({ length: this.puzzleLength }, (_, i) => ++i);
-    return chunk(numList, this.size).flat();
+    return Array.from({ length: this.puzzleLength }, (_, i) => ++i);
+  }
+
+  get referenceFlatMatrix() {
+    return chunk(this.flatMatrix, this.size).flat();
   }
 
   render() {
@@ -76,9 +79,7 @@ export class PuzzleGame extends PuzzleComponent {
     if (!isEmpty(this.savedFlatMatrix)) {
       return this.savedFlatMatrix;
     }
-
-    // ! МАССИВ ДЛЯ БЫСТРОЙ ПРОВЕРКИ
-    // return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 15]; //! 4Х4
+    // return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 15]; //! 4x4 для проверки, при необходимости можно вернуть массивы размером 3х3 4х4 5х5 итд, для быстрой проверки сохранений результата
     return shuffle(this.flatMatrix);
   }
 
@@ -109,7 +110,6 @@ export class PuzzleGame extends PuzzleComponent {
   toggleValidToSwapPuzzle(target) {
     if (target) {
       const itemNumber = Number(target.data("id"));
-      console.log({ itemNumber, valid: this.isValidToSwap(itemNumber) });
       if (this.isValidToSwap(itemNumber)) {
         // target.attr({draggable: true})
         this.validToSwapPuzzle = target;
@@ -136,7 +136,7 @@ export class PuzzleGame extends PuzzleComponent {
   }
 
   checkWinner() {
-    if (JSON.stringify(this.matrix.flat()) === JSON.stringify(this.flatMatrix)) {
+    if (JSON.stringify(this.matrix.flat()) === JSON.stringify(this.referenceFlatMatrix)) {
       this.$emit("winner", { size: this.size, moves: this.moves });
       this.toggleGameShutdown();
     }
@@ -208,14 +208,12 @@ export class PuzzleGame extends PuzzleComponent {
 }
 
 function shuffle(arr) {
-  return arr.sort(() => Math.random() - 0.5);
+  return arr.sort(() => 0.5 - Math.random());
 }
 
 function chunk(arr, chunkSize) {
   return arr.reduce((all, one, idx) => {
-    const row = Math.floor(one % chunkSize);
-    const ch = row > 0 ? row - 1 : chunkSize - 1;
-    // const ch = Math.floor(idx % chunkSize)
+    const ch = Math.floor(idx % chunkSize);
     all[ch] = [].concat(all[ch] || [], one);
     return all;
   }, []);
