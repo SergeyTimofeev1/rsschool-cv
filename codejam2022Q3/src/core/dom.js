@@ -83,16 +83,16 @@ class Dom {
             Object.assign(this.$el.style, styles)
             return this
         }
+        if (typeof styles === 'string') {
+            return this.$el.style[styles]
+        }
     }
 
     swapWith (node) {
         if (node instanceof Dom) {
             node = node.$el
         }
-        const temp = document.createComment('')
-        node.replaceWith(temp)
-        this.$el.replaceWith(node)
-        temp.replaceWith(this.$el)
+        [this.$el.style.transform, node.style.transform] = [node.style.transform, this.$el.style.transform]
     }
 
     text (text) {

@@ -1,7 +1,6 @@
 export function storage(key, data = null) {
   const [obj, field] = key.split('.')
   const parsed = JSON.parse(localStorage.getItem(obj)) || {}
-  console.log({obj, field, parsed})
   if (!data) {
     return field ? parsed[field] : parsed
   }

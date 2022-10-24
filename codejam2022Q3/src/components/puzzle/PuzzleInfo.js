@@ -1,7 +1,7 @@
 import {$} from "../../core/dom";
 import {PuzzleComponent} from "../../core/PuzzleComponent";
 import {capitalize, storage} from "../../core/utils";
-import {Stopwatch} from "../Stopwatch";
+import {Stopwatch} from "../timer/Stopwatch";
 
 export class PuzzleInfo extends PuzzleComponent {
     static className = 'puzzle-game__info'

@@ -1,4 +1,4 @@
-import {humanReadableTime, isEmpty, storage} from "../core/utils";
+import {humanReadableTime, isEmpty, storage} from "../../core/utils";
 
 export class Stopwatch {
     constructor ($root) {
@@ -25,8 +25,6 @@ export class Stopwatch {
         const {timeObj, time} = humanReadableTime(this.currentTime);
         ({h: this.hours, m: this.minutes, s: this.seconds} = timeObj)
         this.$root.text(time)
-
-
     }
 
     start () {
@@ -52,24 +50,4 @@ export class Stopwatch {
         this.seconds += 1
         this.render()
     }
-
-    // render () {
-    //     if (this.seconds >= 60) {
-    //         this.seconds = 0
-    //         this.minutes += 1
-    //     }
-    //     if (this.minutes >= 60) {
-    //         this.minutes = 0
-    //         this.hours += 1
-    //     }
-    //
-    //     this.$root.text(humanReadableTime())
-    // }
-
-}
-
-function addTrailingZero (value) {
-    let result = value.toString()
-    if (value < 10) { result = '0' + value }
-    return result
 }
