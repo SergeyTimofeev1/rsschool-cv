@@ -56,5 +56,7 @@ export class PuzzleMenu extends PuzzleComponent {
     this.$emit("save");
   }
 
-  onResults() {}
+  onResults() {
+    this.$emit("results");
+  }
 }

@@ -1,7 +1,7 @@
 import { $ } from "../../core/dom";
 import { isEmpty, storage } from "../../core/utils";
 import { PuzzleComponent } from "../../core/PuzzleComponent";
-import { ResultsPopUp } from "../modals/ResultsPopUp";
+import { PopUp } from "../modals/PopUp";
 
 export class PuzzleGame extends PuzzleComponent {
   static className = "puzzle-game";
@@ -17,8 +17,6 @@ export class PuzzleGame extends PuzzleComponent {
     this.size = options.size;
     this.moves = storage("puzzle.moves") || 0;
     this.gameDisabled = false;
-
-    customElements.define("results-popup", ResultsPopUp);
   }
 
   get puzzleLength() {
@@ -35,6 +33,10 @@ export class PuzzleGame extends PuzzleComponent {
 
   render() {
     this.generatePuzzleGame();
+
+    const popupEl = $.create("div", PopUp.className);
+    this.popup = new PopUp(popupEl);
+    this.$root.append(popupEl);
   }
 
   init() {
@@ -43,6 +45,7 @@ export class PuzzleGame extends PuzzleComponent {
     this.$on("setSize", this.resetGame.bind(this));
     this.$on("shuffle", this.resetGame.bind(this));
     this.$on("save", this.saveGame.bind(this));
+    this.$on("results", this.openPopup.bind(this));
   }
 
   resetGame(size = null) {
@@ -60,6 +63,11 @@ export class PuzzleGame extends PuzzleComponent {
     storage("puzzle.list", this.matrix.flat());
   }
 
+  openPopup() {
+    console.log(this.popup);
+    this.popup.toggle();
+  }
+
   generatePuzzleGame() {
     this.$root.html("");
     const flatMatrix = this.getFlatShuffledMatrix();
@@ -71,15 +79,14 @@ export class PuzzleGame extends PuzzleComponent {
         .style(this.setPuzzleItemStyle(item));
       this.$root.append(el);
     });
-
-    this.$root.append($.create("results-popup"));
   }
 
   getFlatShuffledMatrix() {
     if (!isEmpty(this.savedFlatMatrix)) {
       return this.savedFlatMatrix;
     }
-    // return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 15]; //! 4x4 для проверки, при необходимости можно вернуть массивы размером 3х3 4х4 5х5 итд, для быстрой проверки сохранений результата
+    // return [1, 5, 9, 13, 2, 6, 10, 14, 3, 7, 11, 16, 4, 8, 12, 15];
+    // return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 15];
     return shuffle(this.flatMatrix);
   }
 
