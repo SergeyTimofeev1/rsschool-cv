@@ -7,10 +7,13 @@ export class Quiz {
   }
 
   getRoot() {
+    const $root = document.createElement('div')
     this.components.forEach((Component) => {
       const component = new Component();
-      this.$el.insertAdjacentHTML('beforeend', component.toHTML())
-    });
+      $root.insertAdjacentHTML('beforeend', component.toHTML())
+    })
+
+    return $root
   }
 
   render() {
