@@ -1,10 +1,14 @@
 // Приложение
 
 import { Quiz } from './components/quiz/Quiz.js';
+import { Player } from './components/quiz/Player.js';
+import { Asnwers } from './components/quiz/Answers.js';
+import { Info } from './components/quiz/Info.js';
 
-
-const quiz = new Quiz('#app',{
-  components: []
+const quiz = new Quiz('#quiz-container', {
+  components: [Info, Player, Asnwers],
 })
 
-console.log('quiz', quiz);
+quiz.render()
+
+// [Info, Player, Asnwers],
