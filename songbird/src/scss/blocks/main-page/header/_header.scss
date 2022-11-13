@@ -1,0 +1,23 @@
+.header {
+  &__inner {
+    @include flex;
+    gap: 1rem;
+  }
+}
+
+.nav-header {
+  &__items {
+    @include flex;
+    gap: 0.8rem;
+  }
+
+  &__link {
+    text-transform: uppercase;
+    transition: all 0.3s;
+    // @include adaptive-value('font-size', 22, 9);
+    @include adaptive-value('font-size', 22, 9);
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

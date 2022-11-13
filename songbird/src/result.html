@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  @@include('html/head.html',{ "title":"Главная" })
+  @@include('html/head.html',{ "title":"Results" })
   <body>
     @@include('html/header.html',{})
-    <main></main>
+
+    <main>@@include('html/result/result-main.html')</main>
+
     @@include('html/footer.html',{})
     <script src="js/app.min.js"></script>
   </body>
