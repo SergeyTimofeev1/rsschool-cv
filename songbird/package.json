@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "gulpfile.js",
-  "type": "module",
+	"type": "module",
 	"scripts": {
 		"dev": "gulp",
 		"build": "gulp build --build",
@@ -19,6 +19,8 @@
 	"devDependencies": {
 		"browser-sync": "latest",
 		"del": "latest",
+		"eslint": "^8.27.0",
+		"eslint-config-google": "^0.14.0",
 		"gulp": "latest",
 		"gulp-autoprefixer": "latest",
 		"gulp-clean-css": "latest",
