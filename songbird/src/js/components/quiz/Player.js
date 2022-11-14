@@ -1,9 +1,18 @@
 import { QuizComponent } from '../../core/QuizComponent.js'
 
 export class Player extends QuizComponent {
+  static className = 'quiz-player'
+  
+  constructor($root) {
+    super($root, {
+      name: 'player',
+      listeners: []
+    })
+  }
+  
   toHTML() {
-    const playerTemplate = `
-      <div class="quiz__player quiz-player">
+    const playerTemplate = 
+      `
         <div class="quiz-player__inner">
         <img
           class="quiz-player__img"
@@ -31,7 +40,6 @@ export class Player extends QuizComponent {
           </div>
         </div>
       </div> 
-  </div>
       `
     return playerTemplate
   }
