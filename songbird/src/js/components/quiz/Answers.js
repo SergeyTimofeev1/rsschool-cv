@@ -11,6 +11,7 @@ export class Answers extends QuizComponent {
       name: 'Answers',
       listeners: ['click']
     })
+
   }
 
   // listeners
@@ -34,8 +35,8 @@ export class Answers extends QuizComponent {
 
   getDescription(id) {
     if(id) {
-      console.log(getRandomData()[id - 1].description)
-      const answer = getRandomData()[id - 1].description
+      const descr = document.querySelector('.quiz-action__text')
+      descr.textContent = getRandomData()[id - 1].description
     }
     return 'Выберете правильный вариант ответа!!!'
   }

@@ -20,15 +20,12 @@ export class Quiz {
       $root.append($el)
       return component
     })
-    console.log($root);
     return $root
 
   }
 
   render() {
-    console.log(this.$el);
     this.$el.append(this.getRoot())
-
     this.components.forEach((component) => {
       component.init()
     })
