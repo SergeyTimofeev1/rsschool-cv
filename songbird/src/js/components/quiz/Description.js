@@ -3,21 +3,21 @@ import { QuizComponent } from "../../core/QuizComponent.js";
 export class Description extends QuizComponent {
   static className = 'quiz-action__description"'
   
-  constructor() {
+  constructor($root,description) {
     super($root, {
       name: 'description',
       listeners: []
     })
+
+    this.description = description
   }
 
   toHTML() {
     const descriptionTemplate = 
       `
-        <div class="quiz-action__description">
           <p class="quiz-action__text">
             ${this.description}
           </p>
-        </div>
       `
     return descriptionTemplate
   }

@@ -15,7 +15,13 @@
     cursor: pointer;
     text-align: center;
     flex: 1 0 auto;
-    padding: 0 1rem;
+    padding: 0 5%;
+    @include adaptive-value('font-size', 20, 10);
+
+    @include media(600px) {
+      padding: 0 1%;
+    }
+
     &:hover {
       background: rgb(40, 239, 123);
     }
@@ -28,6 +34,7 @@
 
 .quiz-player {
   margin-bottom: 2rem;
+
   &__inner {
     @include flex;
     justify-content: start;
@@ -35,7 +42,7 @@
   }
 
   &__img {
-    @include adaptive-value('width', 400, 200);
+    @include adaptive-value('width', 400, 150);
   }
 
   &__info {
@@ -59,15 +66,16 @@
   }
 
   &__button {
+    @include adaptive-value('width', 50, 24);
     background: rgb(40, 239, 123);
-    width: 2rem;
-    height: 2rem;
     border-radius: 50%;
     border: none;
     position: relative;
+    aspect-ratio: 1/1;
     cursor: pointer;
 
     span {
+      @include adaptive-value('font-size', 24, 12);
       position: absolute;
       top: 50%;
       left: 50%;
@@ -90,9 +98,24 @@
     @include adaptive-value('font-size', 24, 12);
   }
 
-  &__answer,
   &__answer label {
+    display: block;
+    min-width: 100%;
     cursor: pointer;
+    height: 100%;
+    width: 100%;
+    padding: 0 1.5rem;
+  }
+
+  &__answer {
+    background-color: aquamarine;
+    border: 1px solid green;
+    border-radius: 0.7rem;
+    margin-bottom: 0.5rem;
+
+    & input[type='radio'] {
+      display: none;
+    }
   }
 
   &__text {

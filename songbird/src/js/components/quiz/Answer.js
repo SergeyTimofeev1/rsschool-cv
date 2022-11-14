@@ -16,11 +16,10 @@ export class Answer extends QuizComponent {
   toHTML() {
     const answerTemplate = 
     `
-      <div class="quiz-action__answer">
+      <div class="quiz-action__answer" id="${this.index}">
         <input
           class="quiz-action__input"
           type="radio"
-          id="answer-${this.index}"
           name="answer"
         />
         <label for="answer-${this.index}">${this.name}</label>

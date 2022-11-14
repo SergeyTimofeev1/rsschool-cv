@@ -1,7 +1,7 @@
 import { QuizComponent } from '../../core/QuizComponent.js'
 import { getRandomData } from '../../core/data.js'
 import { Answer } from './Answer.js'
-import { Description } from './Description.js'
+// import { Description } from './Description.js'
 
 export class Answers extends QuizComponent {
   static className = 'quiz-action__answers'
@@ -9,10 +9,20 @@ export class Answers extends QuizComponent {
   constructor($root) {
     super($root, {
       name: 'Answers',
-      listeners: []
+      listeners: ['click']
     })
   }
+
+  // listeners
   
+  onClick(e) {
+    const target = e.target
+    if (target.closest('label')) {
+      const answerId = target.parentNode.id
+      this.getDescription(answerId)
+    }
+  }
+
   getAnswer() {
     const answersArray = []
     for (let i = 0; i < getRandomData().length; i++) {
@@ -24,14 +34,10 @@ export class Answers extends QuizComponent {
 
   getDescription(id) {
     if(id) {
-      const descrArr = []
-      for (let i = 0; i < getRandomData().length; i++) {
-        const answer = new Description(getRandomData()[i].description)
-        descrArr.push(answer.toHTML())
-      }
-      return descrArr.join('')
+      console.log(getRandomData()[id - 1].description)
+      const answer = getRandomData()[id - 1].description
     }
-    return '***'
+    return 'Выберете правильный вариант ответа!!!'
   }
 
   toHTML() {
@@ -39,9 +45,13 @@ export class Answers extends QuizComponent {
       `
         <div class="quiz__action quiz-action">
           <div class=quiz-action__answers>
-          ${this.getAnswer()}
+            ${this.getAnswer()}
           </div>
-          ${this.getDescription()}
+          <div class="quiz-action__description">
+            <p class="quiz-action__text">
+            ${this.getDescription()}
+            </p>
+          </div>
         </div>
       `
     return answersTemplate
