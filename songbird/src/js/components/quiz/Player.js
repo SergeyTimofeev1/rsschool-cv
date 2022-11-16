@@ -1,4 +1,6 @@
+import { getRandomData } from '../../core/data.js'
 import { QuizComponent } from '../../core/QuizComponent.js'
+import { getRandomBird } from '../../core/data.js';
 
 export class Player extends QuizComponent {
   static className = 'quiz-player'
@@ -6,8 +8,29 @@ export class Player extends QuizComponent {
   constructor($root) {
     super($root, {
       name: 'player',
-      listeners: []
+      listeners: ['click']
     })
+    this.data = getRandomData()
+    this.bird = getRandomBird()
+    this.birdId = getRandomBird().id
+  }
+
+  // listeners
+
+  onClick(e) {
+    const target = e.target
+    const playerNode = document.getElementById('quiz-audio')
+
+    if(target.closest('button') && target.closest('.play')) {
+      playSong(target,playerNode)
+    }
+    if(target.closest('button') && target.closest('.pause')) {
+      stopSong(target,playerNode)
+    }
+  }
+
+  getRandomSong() {
+    console.log(getRandomData())
   }
   
   toHTML() {
@@ -27,15 +50,15 @@ export class Player extends QuizComponent {
           <audio
             class="quiz-player__audio"
             id="quiz-audio"
-            src="#"
+            src="${this.bird.audio}"
             preload="auto"
           ></audio>
           <div class="quiz-player__buttons">
             <button class="quiz-player__button pause" id="button-pause" disabled>
-              <span class="material-symbols-outlined"> pause </span>
+              <span class="material-symbols-outlined">pause</span>
             </button>
             <button class="quiz-player__button play" id="button-play">
-              <span class="material-symbols-outlined"> chevron_right </span>
+              <span class="material-symbols-outlined"> play_arrow </span>
             </button>
           </div>
         </div>
@@ -44,3 +67,16 @@ export class Player extends QuizComponent {
     return playerTemplate
   }
 }
+
+function playSong(target,playerNode) {
+  playerNode.play()
+  target.setAttribute('disabled','true')
+  target.previousElementSibling.removeAttribute('disabled')
+}
+
+function stopSong(target,playerNode) {
+  playerNode.pause()
+  target.setAttribute('disabled','true')
+  target.nextElementSibling.removeAttribute('disabled')
+}
+

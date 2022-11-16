@@ -309,4 +309,9 @@ export function getRandomData(stage = 1) {
 getRandomData()
 
 
+export function getRandomBird() {
+  const randomBird = getRandomData()[Math.floor((Math.random()*getRandomData().length))];
+  return randomBird
+}
 
+getRandomBird()
