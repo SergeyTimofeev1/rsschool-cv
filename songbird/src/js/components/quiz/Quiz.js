@@ -1,4 +1,5 @@
 import {$} from '../../core/Dom.js'
+import { getRandomData } from '../../core/data.js';
 
 //Корневой класс для элементов викторины
 
@@ -10,7 +11,6 @@ export class Quiz {
   }
 
   getRoot() {
-
     const $root = $.create('div', 'quiz-container')
 
     this.components = this.components.map((Component) => {
@@ -21,7 +21,6 @@ export class Quiz {
       return component
     })
     return $root
-
   }
 
   render() {

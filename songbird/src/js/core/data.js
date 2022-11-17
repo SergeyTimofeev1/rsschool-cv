@@ -302,16 +302,23 @@ const birdsData = [
   ]
 ]
 
+const stage = 1
+
 export function getRandomData(stage = 1) {
   return birdsData[stage]
 }
 
-getRandomData()
+// export const data = getRandomData(stage)
 
 
-export function getRandomBird() {
-  const randomBird = getRandomData()[Math.floor((Math.random()*getRandomData().length))];
+
+
+export function getRandomBird(stage = 1) {
+  const randomBird = birdsData[stage][Math.floor((Math.random()*birdsData[stage].length))];
   return randomBird
 }
 
-getRandomBird()
+// export const bird = getRandomBird(stage)
+
+
+
