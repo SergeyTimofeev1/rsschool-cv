@@ -31,14 +31,12 @@ export class Answers extends QuizComponent {
       this.answerId = target.parentNode.id
       this.movesCounter++
       this.changeScore()
-
-      if(this.birdId == this.answerId) {
+      
+      if (isWon(this.birdId,this.answerId)) {
         this.getDescription(this.answerId)
-        target.parentNode.classList.add('correct')
-        this.$root.$el.classList.add('disabled')
-      } else {
-        target.parentNode.classList.add('wrong')
       }
+
+      getCorrectAnswer(target,this.birdId,this.answerId,this.$root.$el)
     }
   }
 
@@ -66,6 +64,18 @@ export class Answers extends QuizComponent {
     return 'Выберете правильный вариант ответа.'
   }
 
+  init() {
+    super.init()
+    this.emitter.subscribe('Change stage', (stageId,newBird) => {
+      this.data = getRandomData(stageId)
+      this.bird = newBird
+      this.birdId = this.bird.id
+      this.$root.$el.textContent = ''
+      this.$root.$el.insertAdjacentHTML('afterbegin', this.toHTML())
+      console.log({answer:this.bird.name});
+    })
+  }
+
   toHTML() {
     const answersTemplate = 
       `
@@ -82,15 +92,19 @@ export class Answers extends QuizComponent {
       `
     return answersTemplate
   }
+}
 
-  init() {
-    super.init()
-    this.emitter.subscribe('Change stage', stageId => {
-      this.data = getRandomData(stageId)
-      this.bird = getRandomBird(stageId)
-      this.birdName = this.bird.name
-      this.$root.$el.textContent = ''
-      this.$root.$el.insertAdjacentHTML('afterbegin', this.toHTML())
-    })
+// helpers
+
+function isWon(birdId, answerId) {
+  return birdId == answerId
+}
+
+function getCorrectAnswer(target,birdId,answerId,root) {
+  if(birdId == answerId) {
+    target.parentNode.classList.add('correct')
+    root.firstElementChild.classList.add('disabled')
+  } else {
+    target.parentNode.classList.add('wrong')
   }
 }

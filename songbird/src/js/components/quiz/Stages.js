@@ -1,4 +1,5 @@
 import { QuizComponent } from '../../core/QuizComponent.js'
+import { getRandomData, getRandomBird } from '../../core/data.js';
 
 export class Stages extends QuizComponent {
 
@@ -33,18 +34,26 @@ export class Stages extends QuizComponent {
   onClick(e) {
     const target = e.target
     const stageId = e.target.dataset.stage
-    this.emitter.emit('Change stage', stageId)
-
     const stages = this.$root.$el.children
+    let newBird = getRandomBird(stageId)
 
-     if(!target.classList.contains('current')) {
-      for(let stage of stages) {
-        if(stage.classList.contains('current')) {
-          stage.classList.remove('current')
-        }
-      }
-      target.classList.add('current')
-     }
-       
+    this.emitter.emit('Change stage', stageId,newBird)
+
+    changeCurrentStageIndication(stages,target)
+
   }
+}
+
+// helpers
+
+
+function changeCurrentStageIndication(stages, target) {
+  if(!target.classList.contains('current')) {
+    for(let stage of stages) {
+      if(stage.classList.contains('current')) {
+        stage.classList.remove('current')
+      }
+    }
+    target.classList.add('current')
+   }
 }

@@ -1,4 +1,5 @@
 import { getRandomData, getRandomBird } from '../../core/data.js'
+import { Emitter } from '../../core/Emitter.js'
 import { QuizComponent } from '../../core/QuizComponent.js'
 
 export class Player extends QuizComponent {
@@ -16,6 +17,7 @@ export class Player extends QuizComponent {
     this.score = 0
   }
 
+
   // listeners
 
   onClick(e) {
@@ -24,6 +26,7 @@ export class Player extends QuizComponent {
     const answersNode = document.querySelector('.quiz-action__answers')
 
     if(target.closest('button') && target.closest('.play')) {
+      console.log(this.bird.name);
       playSong(target,playerNode,answersNode)
     }
 
@@ -34,10 +37,10 @@ export class Player extends QuizComponent {
 
   init() {
     super.init()
-    this.emitter.subscribe('Change stage', stageId => {
+    this.emitter.subscribe('Change stage', (stageId, newBird) => {
       this.data = getRandomData(stageId)
-      this.bird = getRandomBird(stageId)
-      this.birdName = this.bird.name
+      this.bird = newBird
+      console.log({player:this.bird.name});
       this.$root.$el.textContent = ''
       this.$root.$el.insertAdjacentHTML('afterbegin', this.toHTML())
     })

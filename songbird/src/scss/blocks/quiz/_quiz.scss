@@ -8,7 +8,7 @@
   width: 100%;
   margin-bottom: 2rem;
 
-  .active {
+  .success {
     background: green;
     pointer-events: none;
   }
@@ -40,6 +40,9 @@
       border-bottom-right-radius: 0.5rem;
     }
   }
+}
+
+.quiz__wrapper {
 }
 
 .quiz-player {
@@ -117,6 +120,11 @@
   @include flex;
   gap: 1rem;
   margin-bottom: 2rem;
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }
 
   &__answers {
     @include adaptive-value('font-size', 24, 12);
