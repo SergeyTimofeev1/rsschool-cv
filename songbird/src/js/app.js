@@ -7,10 +7,10 @@ import { Stages } from './components/quiz/Stages.js';
 import { stage } from './core/data.js';
 import './core/Emitter.js'
 import './core/data.js'
+import { Emitter } from './core/Emitter.js';
 
 const quiz = new Quiz('#quiz-container', {
   components: [Stages, Player, Answers],
-  stage: stage
 })
 
 quiz.render()

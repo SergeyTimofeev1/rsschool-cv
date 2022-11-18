@@ -4,7 +4,7 @@ export class Stages extends QuizComponent {
 
   static className = 'quiz-info'
   
-  constructor($root,data,bird,stage, options) {
+  constructor($root,data,bird,options) {
     super($root, {
       name: 'quiz-stage',
       listeners: ['click'],

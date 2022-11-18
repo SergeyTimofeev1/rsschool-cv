@@ -2,17 +2,18 @@ import { QuizComponent } from '../../core/QuizComponent.js'
 import { Stages } from './Stages.js'
 import { Answer } from './Answer.js'
 import {$} from '../../core/Dom.js'
+import { getRandomBird, getRandomData } from '../../core/data.js';
+import { Quiz } from './Quiz.js';
 
 export class Answers extends QuizComponent {
   static className = 'quiz__wrapper'
   
-  constructor($root,data,bird,stage, options) {
+  constructor($root,data,bird, options) {
     super($root, {
       name: 'Answers',
       listeners: ['click'],
       ...options,
     })
-
     this.data = data
     this.bird = bird
     this.birdName = this.bird.name
@@ -49,7 +50,6 @@ export class Answers extends QuizComponent {
 
   getAnswer() {
     const answersArray = []
-
     for (let i = 0; i < this.data.length; i++) {
       const answer = new Answer('quiz-action__answer',this.data[i].name, i+1)
       answersArray.push(answer.toHTML())
@@ -64,14 +64,6 @@ export class Answers extends QuizComponent {
     }
     return 'Выберете правильный вариант ответа.'
   }
-
-  init() {
-    super.init()
-    this.emitter.subscribe('stage', stageId => {
-
-     })
-  }
-
 
   toHTML() {
     const answersTemplate = 
@@ -88,5 +80,16 @@ export class Answers extends QuizComponent {
         </div>
       `
     return answersTemplate
+  }
+
+  init() {
+    super.init()
+    this.emitter.subscribe('Change stage', stageId => {
+      this.data = getRandomData(stageId)
+      this.bird = getRandomBird(stageId)
+      this.birdName = this.bird.name
+      this.$root.$el.textContent = ''
+      this.$root.$el.insertAdjacentHTML('afterbegin', this.toHTML())
+    })
   }
 }

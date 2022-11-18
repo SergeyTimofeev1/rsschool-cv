@@ -9,7 +9,6 @@ export class Description extends QuizComponent {
       listeners: [],
       ...options
     })
-
     this.description = description
   }
 

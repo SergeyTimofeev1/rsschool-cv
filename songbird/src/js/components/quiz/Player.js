@@ -1,4 +1,4 @@
-import { getRandomData } from '../../core/data.js'
+import { getRandomData, getRandomBird } from '../../core/data.js'
 import { QuizComponent } from '../../core/QuizComponent.js'
 
 export class Player extends QuizComponent {
@@ -34,7 +34,13 @@ export class Player extends QuizComponent {
 
   init() {
     super.init()
+    this.emitter.subscribe('Change stage', stageId => {
+      this.data = getRandomData(stageId)
+      this.bird = getRandomBird(stageId)
+      this.birdName = this.bird.name
+    })
   }
+
   
   toHTML() {
 

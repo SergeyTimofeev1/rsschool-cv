@@ -1,6 +1,7 @@
 import {$} from '../../core/Dom.js'
 import { data, bird } from '../../core/data.js';
 import { Emitter } from '../../core/Emitter.js';
+import { getRandomData } from '../../core/data.js';
 
 //Корневой класс для элементов викторины
 
@@ -9,7 +10,6 @@ export class Quiz {
   constructor(selector, options) {
     this.$el = $(selector)
     this.components = options.components || [],
-    this.stage = options.stage
     this.emitter = new Emitter()
   }
 
@@ -21,7 +21,7 @@ export class Quiz {
 
     this.components = this.components.map((Component) => {
       const $el = $.create('div', Component.className)
-      const component = new Component($el, data, bird, this.stage, componentOptions)
+      const component = new Component($el, data, bird, componentOptions)
       $el.html(component.toHTML()) 
       $root.append($el)
       return component
