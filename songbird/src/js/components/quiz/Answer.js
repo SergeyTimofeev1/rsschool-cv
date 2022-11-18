@@ -4,10 +4,11 @@ import { QuizComponent } from '../../core/QuizComponent.js'
 export class Answer extends QuizComponent {
   static className = 'quiz-action__answer'
   
-  constructor($root, name, index ) {
+  constructor($root, name, index , options) {
     super($root, {
       name: 'answer',
-      listeners: []
+      listeners: [],
+      ...options
     })
     this.name = name
     this.index = index

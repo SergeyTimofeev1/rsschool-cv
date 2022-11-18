@@ -1,19 +1,20 @@
 import { QuizComponent } from '../../core/QuizComponent.js'
-import { getRandomBird, getRandomData } from '../../core/data.js'
+import { Stages } from './Stages.js'
 import { Answer } from './Answer.js'
 import {$} from '../../core/Dom.js'
 
 export class Answers extends QuizComponent {
   static className = 'quiz__wrapper'
   
-  constructor($root) {
+  constructor($root,data,bird,stage, options) {
     super($root, {
       name: 'Answers',
-      listeners: ['click']
+      listeners: ['click'],
+      ...options,
     })
 
-    this.data = getRandomData()
-    this.bird = getRandomBird()
+    this.data = data
+    this.bird = bird
     this.birdName = this.bird.name
     this.birdId = this.bird.id
     this.answerId = null
@@ -29,7 +30,6 @@ export class Answers extends QuizComponent {
       this.answerId = target.parentNode.id
       this.movesCounter++
       this.changeScore()
-      console.log(this.movesCounter);
 
       if(this.birdId == this.answerId) {
         this.getDescription(this.answerId)
@@ -43,13 +43,13 @@ export class Answers extends QuizComponent {
   changeScore() {
     let scoreNode = document.querySelector('.quiz-player__score')
     if(this.birdId == this.answerId) {
-      // this.score += 5
-      scoreNode.textContent = `Ваш счет ${this.score - this.movesCounter}`
+      scoreNode.textContent = `Ваш счет: ${this.score - this.movesCounter}`
     }
   }
 
   getAnswer() {
     const answersArray = []
+
     for (let i = 0; i < this.data.length; i++) {
       const answer = new Answer('quiz-action__answer',this.data[i].name, i+1)
       answersArray.push(answer.toHTML())
@@ -62,11 +62,18 @@ export class Answers extends QuizComponent {
       const descr = document.querySelector('.quiz-action__text')
       descr.textContent = this.data[id - 1].description
     }
-    return 'Выберете правильный вариант ответа!!!'
+    return 'Выберете правильный вариант ответа.'
   }
 
+  init() {
+    super.init()
+    this.emitter.subscribe('stage', stageId => {
+
+     })
+  }
+
+
   toHTML() {
-    console.log({answers: this.bird});
     const answersTemplate = 
       `
         <div class="quiz__action quiz-action">

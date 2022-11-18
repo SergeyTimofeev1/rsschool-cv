@@ -1,4 +1,5 @@
 
+
 const birdsData = [
   [       
     {
@@ -302,23 +303,23 @@ const birdsData = [
   ]
 ]
 
-const stage = 1
+export let stage = 0
 
-export function getRandomData(stage = 1) {
+export function getRandomData(stage) {
   return birdsData[stage]
 }
 
-// export const data = getRandomData(stage)
+export const data = getRandomData(stage)
 
 
-
-
-export function getRandomBird(stage = 1) {
+export function getRandomBird(stage) {
   const randomBird = birdsData[stage][Math.floor((Math.random()*birdsData[stage].length))];
   return randomBird
 }
 
-// export const bird = getRandomBird(stage)
+export const bird = getRandomBird(stage)
+
+
 
 
 

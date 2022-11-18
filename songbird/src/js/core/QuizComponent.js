@@ -3,7 +3,8 @@ import { DomListeners } from "./DomListeners.js"
 export class QuizComponent extends DomListeners {
   constructor($root, options = {}) {
     super($root, options.listeners)
-    this.name = options.name
+    this.name = options.name || ''
+    this.emitter = options.emitter 
   }
   // Возвращает шаблон компонентов
   toHTML() {

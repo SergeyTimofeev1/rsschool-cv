@@ -1,17 +1,17 @@
 import { getRandomData } from '../../core/data.js'
 import { QuizComponent } from '../../core/QuizComponent.js'
-import { getRandomBird } from '../../core/data.js';
 
 export class Player extends QuizComponent {
   static className = 'quiz-player'
   
-  constructor($root) {
+  constructor($root, data, bird, options) {
     super($root, {
       name: 'player',
-      listeners: ['click']
+      listeners: ['click'],
+      ...options
     })
-    this.data = getRandomData()
-    this.bird = getRandomBird()
+    this.data = data
+    this.bird = bird
     this.birdId = this.bird.id
     this.score = 0
   }
@@ -26,17 +26,18 @@ export class Player extends QuizComponent {
     if(target.closest('button') && target.closest('.play')) {
       playSong(target,playerNode,answersNode)
     }
+
     if(target.closest('button') && target.closest('.pause')) {
       stopSong(target,playerNode)
     }
   }
 
-  getRandomSong() {
-    console.log(getRandomData())
+  init() {
+    super.init()
   }
   
   toHTML() {
-    console.log({player: this.bird});
+
     const playerTemplate = 
       `
         <div class="quiz-player__inner">

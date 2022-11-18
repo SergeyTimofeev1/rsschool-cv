@@ -7,6 +7,7 @@
   height: 100%;
   width: 100%;
   margin-bottom: 2rem;
+
   .active {
     background: green;
   }
@@ -16,7 +17,7 @@
     text-align: center;
     flex: 1 0 auto;
     padding: 0 5%;
-    @include adaptive-value('font-size', 20, 10);
+    @include adaptive-value('font-size', 20, 8);
 
     @include media(600px) {
       padding: 0 1%;
@@ -157,4 +158,8 @@
     @include adaptive-value('line-height', 50, 12);
     text-align: left;
   }
+}
+
+.quiz-container {
+  padding: 0;
 }

@@ -13,7 +13,7 @@ body {
   @include adaptive-value('font-size', 30, 15);
 }
 
-[class*='container'] {
+.container {
   display: block;
   max-width: 100%;
   width: 1200px;
