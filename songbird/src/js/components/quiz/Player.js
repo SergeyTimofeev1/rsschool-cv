@@ -38,6 +38,8 @@ export class Player extends QuizComponent {
       this.data = getRandomData(stageId)
       this.bird = getRandomBird(stageId)
       this.birdName = this.bird.name
+      this.$root.$el.textContent = ''
+      this.$root.$el.insertAdjacentHTML('afterbegin', this.toHTML())
     })
   }
 

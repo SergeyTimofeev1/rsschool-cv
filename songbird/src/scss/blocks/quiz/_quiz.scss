@@ -10,6 +10,11 @@
 
   .active {
     background: green;
+    pointer-events: none;
+  }
+
+  .current {
+    background-color: green;
   }
 
   &__stage {
@@ -24,11 +29,15 @@
     }
 
     &:hover {
-      background: rgb(40, 239, 123);
+      background: green;
     }
     &:nth-child(1) {
       border-top-left-radius: 0.5rem;
       border-bottom-left-radius: 0.5rem;
+    }
+    &:nth-child(6) {
+      border-top-right-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
     }
   }
 }

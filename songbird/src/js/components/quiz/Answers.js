@@ -35,6 +35,7 @@ export class Answers extends QuizComponent {
       if(this.birdId == this.answerId) {
         this.getDescription(this.answerId)
         target.parentNode.classList.add('correct')
+        this.$root.$el.classList.add('disabled')
       } else {
         target.parentNode.classList.add('wrong')
       }
