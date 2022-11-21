@@ -20,32 +20,22 @@ export class Answers extends QuizComponent {
     this.birdId = this.bird.id
     this.answerId = null
     this.score = 6
-    this.movesCounter = 0
   }
-
-  // listeners
 
   onClick(e) {
     const target = e.target
-    if (target.closest('label')) {
-      this.answerId = target.parentNode.id
-      this.movesCounter++
-      this.changeScore()
-      
-      if (isWon(this.birdId,this.answerId)) {
-        this.getDescription(this.answerId)
-        this.emitter.emit('show next button')
-      }
+    this.answerId = target.id
+    this.getDescription(this.answerId)
 
-      getCorrectAnswer(target,this.birdId,this.answerId,this.$root.$el)
-    }
-  }
 
-  changeScore() {
-    let scoreNode = document.querySelector('.quiz-player__score')
-    if(this.birdId == this.answerId) {
-      scoreNode.textContent = `Ваш счет: ${this.score - this.movesCounter}`
+    
+    if (isWon(this.birdId,this.answerId)) {
+      this.emitter.emit('show correct bird', this.birdId)
+      this.emitter.emit('show next button')
+      this.emitter.emit('change score', getwrongAnswers())
     }
+
+    selectCorrectAnswer(target,this.birdId,this.answerId,this.$root.$el.firstElementChild)
   }
 
   getAnswer() {
@@ -101,11 +91,18 @@ function isWon(birdId, answerId) {
   return birdId == answerId
 }
 
-function getCorrectAnswer(target,birdId,answerId,root) {
+function selectCorrectAnswer(target,birdId,answerId,root) {
   if(birdId == answerId) {
-    target.parentNode.classList.add('correct')
+    target.classList.add('correct')
     root.firstElementChild.classList.add('disabled')
   } else {
-    target.parentNode.classList.add('wrong')
+    target.classList.add('wrong')
   }
+}
+
+function getwrongAnswers() {
+  const answers =  document.querySelectorAll('.wrong')
+  let wrongAnswers = answers.length
+
+  return wrongAnswers
 }

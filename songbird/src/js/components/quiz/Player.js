@@ -14,6 +14,9 @@ export class Player extends QuizComponent {
     this.data = data
     this.bird = bird
     this.birdId = this.bird.id
+    this.answerId = null
+    this.birdName = '***'
+    this.birdImg = "/img/quiz/quiz-player.jpeg"
     this.score = 0
   }
 
@@ -40,10 +43,30 @@ export class Player extends QuizComponent {
     this.emitter.subscribe('Change stage', (stageId, newBird) => {
       this.data = getRandomData(stageId)
       this.bird = newBird
+      this.birdName = '***'
+      this.birdImg = "/img/quiz/quiz-player.jpeg"
       console.log({player:this.bird.name});
-      this.$root.$el.textContent = ''
-      this.$root.$el.insertAdjacentHTML('afterbegin', this.toHTML())
+      this.reRenderHTML()
     })
+
+    this.emitter.subscribe('show correct bird', birdId => {
+      const correctBird = this.data[birdId-1]
+      this.birdName = correctBird.name
+      this.birdImg = correctBird.image
+      this.reRenderHTML()
+    })
+
+    this.emitter.subscribe('change score', wrongPoints => {
+      const calcScore = 5 - wrongPoints
+      const scoreNode = document.querySelector('.quiz-player__score')
+      this.score += calcScore
+      scoreNode.textContent = `Ваш счет: ${this.score}`
+    })
+  }
+
+  reRenderHTML() {
+    this.$root.$el.textContent = ''
+    this.$root.$el.insertAdjacentHTML('afterbegin', this.toHTML())
   }
 
   
@@ -54,11 +77,11 @@ export class Player extends QuizComponent {
         <div class="quiz-player__inner">
           <img
             class="quiz-player__img"
-            src="/img/quiz/quiz-player.jpeg"
+            src=${this.birdImg}
             alt="quiz-player"
           />
         <div class="quiz-player__info">
-            <h3 class="quiz-player__title">***</h3>
+            <h3 class="quiz-player__title">${this.birdName}</h3>
             <div class="quiz-player__score">Ваш счет: ${this.score}</div>
             <div class="quiz-player__progress-bar-wrapper">
               <div class="quiz-player__progress-bar"></div>

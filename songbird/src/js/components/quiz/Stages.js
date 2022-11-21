@@ -32,7 +32,6 @@ export class Stages extends QuizComponent {
     super.init()
     this.emitter.subscribe('Change stage', (stageId,newBird) => {
       const stages = this.$root.$el.children
-      
       changeCurrentStageIndication(stages)
     })
   }

@@ -45,6 +45,7 @@
 
 .quiz-player {
   margin-bottom: 2rem;
+  transition: all 2s ease-in-out;
 
   &__inner {
     @include flex;
@@ -128,6 +129,7 @@
     @include adaptive-value('font-size', 24, 12);
     min-width: 50%;
     transition: all 0.5s ease-in-out;
+    cursor: pointer;
 
     &.disabled {
       opacity: 0.4;
@@ -136,12 +138,8 @@
   }
 
   &__answer label {
-    display: block;
-    min-width: 100%;
-    cursor: pointer;
-    height: 100%;
-    width: 100%;
     padding: 0 1.5rem;
+    pointer-events: none;
   }
 
   &__answer {
@@ -165,6 +163,7 @@
 
     & input[type='radio'] {
       display: none;
+      pointer-events: none;
     }
   }
 
