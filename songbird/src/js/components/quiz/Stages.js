@@ -13,6 +13,7 @@ export class Stages extends QuizComponent {
     })
     this.data = data
     this.bird = bird
+    // this.stageId = 1
   }
 
   toHTML() {
@@ -29,31 +30,28 @@ export class Stages extends QuizComponent {
 
   init() {
     super.init()
+    this.emitter.subscribe('Change stage', (stageId,newBird) => {
+      const stages = this.$root.$el.children
+      
+      console.log(stages);
+      changeCurrentStageIndication(stages)
+    })
   }
 
   onClick(e) {
-    const target = e.target
-    const stageId = e.target.dataset.stage
-    const stages = this.$root.$el.children
-    let newBird = getRandomBird(stageId)
-
-    this.emitter.emit('Change stage', stageId,newBird)
-
-    changeCurrentStageIndication(stages,target)
 
   }
 }
 
 // helpers
 
-
-function changeCurrentStageIndication(stages, target) {
-  if(!target.classList.contains('current')) {
-    for(let stage of stages) {
-      if(stage.classList.contains('current')) {
-        stage.classList.remove('current')
-      }
+function changeCurrentStageIndication(stages) {
+  for(let stage of stages) {
+    if(stage.classList.contains('current')) {
+      stage.classList.remove('current')
     }
-    target.classList.add('current')
-   }
+  }
 }
+
+
+

@@ -8,9 +8,10 @@ import { stage } from './core/data.js';
 import './core/Emitter.js'
 import './core/data.js'
 import { Emitter } from './core/Emitter.js';
+import { NextStageButton } from './components/quiz/NextStageButton.js';
 
 const quiz = new Quiz('#quiz-container', {
-  components: [Stages, Player, Answers],
+  components: [Stages, Player, Answers, NextStageButton],
 })
 
 quiz.render()

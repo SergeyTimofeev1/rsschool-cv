@@ -58,7 +58,7 @@ export class Player extends QuizComponent {
             alt="quiz-player"
           />
         <div class="quiz-player__info">
-            <h3 class="quiz-player__title">Title</h3>
+            <h3 class="quiz-player__title">***</h3>
             <div class="quiz-player__score">Ваш счет: ${this.score}</div>
             <div class="quiz-player__progress-bar-wrapper">
               <div class="quiz-player__progress-bar"></div>

@@ -180,3 +180,24 @@
 .quiz-container {
   padding: 0;
 }
+
+.quiz-next {
+  opacity: 0;
+  transition: all 0.3s ease-in;
+
+  &.active {
+    opacity: 1;
+  }
+
+  &__button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border-radius: 1rem;
+    background: green;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+  }
+}

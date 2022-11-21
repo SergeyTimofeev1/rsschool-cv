@@ -34,6 +34,7 @@ export class Answers extends QuizComponent {
       
       if (isWon(this.birdId,this.answerId)) {
         this.getDescription(this.answerId)
+        this.emitter.emit('show next button')
       }
 
       getCorrectAnswer(target,this.birdId,this.answerId,this.$root.$el)
