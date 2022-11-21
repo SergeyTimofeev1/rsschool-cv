@@ -9,7 +9,7 @@
   margin-bottom: 2rem;
 
   .success {
-    background: green;
+    background: rgba(0, 128, 0, 0.7);
     pointer-events: none;
   }
 
@@ -18,23 +18,21 @@
   }
 
   &__stage {
-    cursor: pointer;
     text-align: center;
     flex: 1 0 auto;
     padding: 0 5%;
     @include adaptive-value('font-size', 20, 8);
+    pointer-events: none;
 
     @include media(600px) {
       padding: 0 1%;
     }
 
-    &:hover {
-      background: green;
-    }
     &:nth-child(1) {
       border-top-left-radius: 0.5rem;
       border-bottom-left-radius: 0.5rem;
     }
+
     &:nth-child(6) {
       border-top-right-radius: 0.5rem;
       border-bottom-right-radius: 0.5rem;
@@ -184,7 +182,7 @@
 .quiz-next {
   opacity: 0;
   transition: all 0.3s ease-in;
-
+  margin-bottom: 1rem;
   &.active {
     opacity: 1;
   }
