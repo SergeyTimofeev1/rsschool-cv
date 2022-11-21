@@ -1,0 +1,24 @@
+// reset
+@import './libs/reset';
+// MIXINS
+@import './mixins/adaptive-value';
+@import './mixins/flex';
+@import './mixins/media';
+// BLOCKS
+@import './blocks/main-page/header/header';
+@import './blocks/quiz/quiz';
+@import './blocks/footer/footer';
+@import './blocks/main-page/main';
+
+body {
+  font-family: CormorantUpright;
+  @include adaptive-value('font-size', 30, 15);
+}
+
+.container {
+  display: block;
+  max-width: 100%;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}

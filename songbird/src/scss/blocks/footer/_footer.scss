@@ -1,0 +1,21 @@
+.footer {
+  margin-bottom: 1rem;
+  &__inner {
+    @include flex;
+    gap: 5%;
+  }
+
+  &__logo-img {
+    // aspect-ratio: 1 / 1;
+    // width: 50%;
+    @include adaptive-value('width', 300, 150);
+  }
+}
+
+.social-links {
+  height: 3rem;
+  &__items {
+    @include flex;
+    gap: 1rem;
+  }
+}
