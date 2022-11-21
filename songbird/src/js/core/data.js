@@ -303,7 +303,7 @@ const birdsData = [
   ]
 ]
 
-let stage = 0
+let stage = 5
 
 export function getRandomData(stage) {
   return birdsData[stage]

@@ -1,5 +1,5 @@
 import { QuizComponent } from '../../core/QuizComponent.js'
-import { Stages } from './Stages.js'
+import { isFinalStage, Stages } from './Stages.js'
 import { Answer } from './Answer.js'
 import {$} from '../../core/Dom.js'
 import { getRandomBird, getRandomData } from '../../core/data.js';
@@ -19,22 +19,26 @@ export class Answers extends QuizComponent {
     this.birdName = this.bird.name
     this.birdId = this.bird.id
     this.answerId = null
-    this.score = 6
   }
 
   onClick(e) {
     const target = e.target
+    const resultBtn = document.querySelector('.quiz-result')
     this.answerId = target.id
     this.getDescription(this.answerId)
 
-
-    
     if (isWon(this.birdId,this.answerId)) {
       this.emitter.emit('show correct bird', this.birdId)
       this.emitter.emit('show next button')
       this.emitter.emit('change score', getwrongAnswers())
     }
 
+    this.emitter.subscribe('final stage', (length, stage) => {
+      if (length == stage) {
+        resultBtn.classList.add('active')
+      }
+    })
+    
     selectCorrectAnswer(target,this.birdId,this.answerId,this.$root.$el.firstElementChild)
   }
 

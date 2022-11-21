@@ -22,6 +22,12 @@ export class NextStageButton extends QuizComponent {
     this.emitter.subscribe('show next button', _data => {
       this.$root.$el.classList.add('active')
     })
+
+    this.emitter.subscribe('final stage', (length, stage) => {
+      if(length == stage) {
+        this.$root.$el.style.display = 'none'
+      }
+    })
   }
 
   // listeners
