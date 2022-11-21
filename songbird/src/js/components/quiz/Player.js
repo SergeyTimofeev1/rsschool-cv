@@ -8,7 +8,7 @@ export class Player extends QuizComponent {
   constructor($root, data, bird, options) {
     super($root, {
       name: 'player',
-      listeners: ['click'],
+      listeners: ['click','timeupdate'],
       ...options
     })
     this.data = data
@@ -19,7 +19,6 @@ export class Player extends QuizComponent {
     this.birdImg = "/img/quiz/quiz-player.jpeg"
     this.score = 0
   }
-
 
   // listeners
 
@@ -36,6 +35,10 @@ export class Player extends QuizComponent {
     if(target.closest('button') && target.closest('.pause')) {
       stopSong(target,playerNode)
     }
+  }
+
+  onTimeupdate(e) {
+    updateProgressBar()
   }
 
   init() {
@@ -71,7 +74,6 @@ export class Player extends QuizComponent {
 
   
   toHTML() {
-
     const playerTemplate = 
       `
         <div class="quiz-player__inner">
@@ -118,5 +120,9 @@ export function stopSong(target,playerNode) {
   playerNode.pause()
   target.setAttribute('disabled','true')
   target.nextElementSibling.removeAttribute('disabled')
+}
+
+export function updateProgressBar(e) {
+  console.log('update');
 }
 

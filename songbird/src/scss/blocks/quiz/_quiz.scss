@@ -3,18 +3,19 @@
   @include adaptive-value('font-size', 24, 10);
   border-radius: 0.5rem;
   height: 3rem;
-  background-color: aquamarine;
+  background-color: #ddc3a5;
   height: 100%;
   width: 100%;
   margin-bottom: 2rem;
+  color: antiquewhite;
 
   .success {
-    background: rgba(0, 128, 0, 0.7);
+    background: #201f20;
     pointer-events: none;
   }
 
   .current {
-    background-color: green;
+    background-color: #201e20;
   }
 
   &__stage {
@@ -77,18 +78,18 @@
   &__progress-bar-wrapper {
     width: 100%;
     height: 2px;
-    background: aquamarine;
+    background: #ddc3a5;
   }
 
   &__progress-bar {
     width: 5%;
     height: 2px;
-    background: green;
+    background: #201e20;
   }
 
   &__button {
     @include adaptive-value('width', 50, 24);
-    background: rgb(40, 239, 123);
+    background: #ddc3a5;
     border-radius: 50%;
     border: none;
     position: relative;
@@ -106,7 +107,7 @@
     }
 
     &:disabled {
-      background: aquamarine;
+      background: #ddc3a5;
       cursor: default;
     }
   }
@@ -140,22 +141,23 @@
   }
 
   &__answer {
-    background-color: aquamarine;
-    border: 1px solid green;
+    background-color: #ddc3a5;
+    border: 1px solid #201e20;
     border-radius: 0.7rem;
     margin-bottom: 0.5rem;
 
     &:hover {
-      background: rgb(6, 172, 6);
+      background: #e0a96d;
     }
 
     &.wrong {
-      background: red;
-      border: 1px solid red;
+      background: #201e20;
+      border: 1px solid #201e20;
+      opacity: 0.1;
     }
 
     &.correct {
-      background: green;
+      background: #e48e33;
     }
 
     & input[type='radio'] {
@@ -191,7 +193,7 @@
     width: 100%;
     text-align: center;
     border-radius: 1rem;
-    background: green;
+    background: #201e20;
     border: none;
     outline: none;
     color: white;

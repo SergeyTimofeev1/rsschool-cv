@@ -22,10 +22,10 @@ export class Stages extends QuizComponent {
         <div class="quiz-info__stage current" data-stage="1">Уровень 1</div>
         <div class="quiz-info__stage" data-stage="2">Уровень 2</div>
         <div class="quiz-info__stage" data-stage="3">Уровень 3</div>
+        <div class="quiz-info__stage" data-stage="4">Уровень 4</div>
+        <div class="quiz-info__stage" data-stage="5">Уровень 5</div>
+        <div class="quiz-info__stage" data-stage="6">Уровень 6</div>
         `
-        // <div class="quiz-info__stage" data-stage="4">Уровень 4</div>
-        // <div class="quiz-info__stage" data-stage="5">Уровень 5</div>
-        // <div class="quiz-info__stage" data-stage="6">Уровень 6</div>
     return stageTemplate
   }
 
