@@ -1,0 +1,391 @@
+@charset "UTF-8";
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: "Libre Baskerville", serif;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class],
+li[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+[class=container] {
+  margin: 0 auto;
+  display: block;
+  max-width: 1600px;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+a[class] {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-header__items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+}
+.nav-header__link {
+  text-transform: uppercase;
+  transition: all 0.3s;
+  font-size: calc(
+    9px + 13 * ((100vw - 320px) / (1600))
+  );
+}
+.nav-header__link:hover {
+  text-decoration: underline;
+}
+
+.quiz-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: calc(
+    10px + 14 * ((100vw - 320px) / (1600))
+  );
+  border-radius: 0.5rem;
+  height: 3rem;
+  background-color: #ddc3a5;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 2rem;
+  color: antiquewhite;
+}
+.quiz-info .success {
+  background: #201f20;
+  pointer-events: none;
+}
+.quiz-info .current {
+  background-color: #201e20;
+}
+.quiz-info__stage {
+  text-align: center;
+  flex: 1 0 auto;
+  padding: 0 5%;
+  font-size: calc(
+    8px + 12 * ((100vw - 320px) / (1600))
+  );
+  pointer-events: none;
+}
+@media only screen and (max-width: 600px) {
+  .quiz-info__stage {
+    padding: 0 1%;
+  }
+}
+.quiz-info__stage:first-child {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.quiz-info__stage:last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.quiz-player {
+  margin-bottom: 2rem;
+  transition: all 2s ease-in-out;
+}
+.quiz-player__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: start;
+  gap: 1rem;
+}
+.quiz-player__img {
+  width: calc(
+    150px + 250 * ((100vw - 320px) / (1600))
+  );
+}
+.quiz-player__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  position: relative;
+}
+.quiz-player__score {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: calc(
+    12px + 12 * ((100vw - 320px) / (1600))
+  );
+}
+@media only screen and (max-width: 500px) {
+  .quiz-player__score {
+    position: relative;
+  }
+}
+.quiz-player__progress-bar-wrapper {
+  width: 100%;
+  height: 2px;
+  background: #ddc3a5;
+}
+.quiz-player__progress-bar {
+  width: 5%;
+  height: 2px;
+  background: #201e20;
+}
+.quiz-player__button {
+  width: calc(
+    24px + 26 * ((100vw - 320px) / (1600))
+  );
+  background: #ddc3a5;
+  border-radius: 50%;
+  border: none;
+  position: relative;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.quiz-player__button span {
+  font-size: calc(
+    12px + 12 * ((100vw - 320px) / (1600))
+  );
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.quiz-player__button:disabled {
+  background: #ddc3a5;
+  cursor: default;
+}
+
+.quiz-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.quiz-action.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+.quiz-action__answers {
+  font-size: calc(
+    12px + 12 * ((100vw - 320px) / (1600))
+  );
+  min-width: 50%;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+.quiz-action__answers.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.quiz-action__answer label {
+  padding: 0 1.5rem;
+  pointer-events: none;
+}
+.quiz-action__answer {
+  background-color: #ddc3a5;
+  border: 1px solid #201e20;
+  border-radius: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+.quiz-action__answer:hover {
+  background: #e0a96d;
+}
+.quiz-action__answer.wrong {
+  background: #201e20;
+  border: 1px solid #201e20;
+  opacity: 0.1;
+}
+.quiz-action__answer.correct {
+  background: #e48e33;
+}
+.quiz-action__answer input[type=radio] {
+  display: none;
+  pointer-events: none;
+}
+.quiz-action__text {
+  font-size: calc(
+    12px + 12 * ((100vw - 320px) / (1600))
+  );
+  line-height: calc(
+    12px + 38 * ((100vw - 320px) / (1600))
+  );
+  text-align: left;
+}
+
+.quiz-container {
+  padding: 0;
+}
+
+.quiz-next {
+  opacity: 0;
+  transition: all 0.3s ease-in;
+  margin-bottom: 1rem;
+  pointer-events: none;
+}
+.quiz-next.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.quiz-next__button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  border-radius: 1rem;
+  background: #201e20;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+}
+
+.quiz-result {
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+}
+.quiz-result.active {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.footer {
+  margin-bottom: 1rem;
+}
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5%;
+}
+.footer__logo-img {
+  width: calc(
+    150px + 150 * ((100vw - 320px) / (1600))
+  );
+}
+
+.social-links {
+  height: 3rem;
+}
+.social-links__items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.main-body {
+  background: url("../img/quiz/animesh-bhargava-TlyBwBMwXPU-unsplash.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+body {
+  font-family: CormorantUpright;
+  font-size: calc(
+    15px + 15 * ((100vw - 320px) / (1600))
+  );
+}
+
+.container {
+  display: block;
+  max-width: 100%;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
